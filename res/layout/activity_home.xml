@@ -33,9 +33,4 @@
         android:layout_below="@+id/btn_esta"
         android:layout_centerInParent="true"
         />
-    <!-- COMENTARIO DE PRUEBA -->
-	<!-- COMENTARIO DE PRUEBA 2 Y WEAS -->
-	<!-- COMENTARIO DE PRUEBA 3 Y WEAS -->
-	<!-- FUNCIONO LA WEA XD....... -->
-	<!-- FINAL -->
 </RelativeLayout>
