@@ -1,0 +1,26 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<resources>
+
+    <string name="app_name">IdControl</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_1d">barcode modules set</string>
+    <string name="action_reset">Restore Factory Settings</string>
+    <string name="action_reset_desc">reset all settings to factory state, clearing the user to set parameters</string>
+    <string name="action_datatype">Setting Data Format</string>
+    <string name="action_datatype_desc">Set the data format is: barcode data + carriage return line, to facilitate data analysis</string>
+    <string name="action_encodingtype">Encoding Type</string>
+    <string name="action_encodingtype_desc">Set the qr code decoding encoding type</string>
+    <string name="action_encoding_tip">Please select a code type</string>
+    <string name="action_setsuccess">Settings success</string>
+    <string name="action_2d">Qr modules set</string>
+    <string name="exit">Exit</string>
+    <string name="open_scan">Scanear</string>
+    <string name="empty">Empty</string>
+    <string name="popup_title">Select</string>
+    <string name="popup_message">Device quit, you have to exit the application do?</string>
+    <string name="popup_yes">OK</string>
+    <string name="popup_no">Cancel</string>
+	<string name="sincronizar">SINCRONIZAR</string>
+	<string name="estadisticas">ESTADISTICAS</string>
+	<string name="escanear">ESCANEAR</string>
+</resources>
