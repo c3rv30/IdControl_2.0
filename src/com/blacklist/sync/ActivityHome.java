@@ -18,8 +18,8 @@ public class ActivityHome extends Activity {
 	}
 	
 	//Button Scan activity
-    public void btnScan(View v){
-    	Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+    public void btnScan(View view){
+    	Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
     
