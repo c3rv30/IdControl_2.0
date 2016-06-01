@@ -9,6 +9,8 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -67,7 +69,14 @@ public class MainActivitySync extends Activity {
         //alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, Calendar.getInstance().getTimeInMillis() + 5000, 60 * 1000, pendingIntent);
     }
     
- // Options Menu (ActionBar Menu)
+  //Button Sinc. BlackList
+    public void syncDB(View v){
+        controller.deleteFromTable();
+        syncSQLiteMySQLDB();
+    }
+    
+    /* 
+    // Options Menu (ActionBar Menu)
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -89,7 +98,7 @@ public class MainActivitySync extends Activity {
         }
         return super.onOptionsItemSelected(item);
     }
-
+	*/
 
     // Method to Sync MySQL to SQLite DB
     public void syncSQLiteMySQLDB() {

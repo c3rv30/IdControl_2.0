@@ -10,6 +10,7 @@
         android:id="@+id/btn_scan"
         android:layout_gravity="center_horizontal"
         android:layout_centerInParent="true"
+        android:onClick="btnScan"
         />
 
     <Button
@@ -21,6 +22,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_below="@+id/btn_scan"
         android:layout_centerInParent="true"
+        android:onClick="btnStadistic"
         />
 
     <Button
@@ -32,5 +34,6 @@
         android:layout_gravity="center_horizontal"
         android:layout_below="@+id/btn_esta"
         android:layout_centerInParent="true"
+        android:onClick="btnSync"
         />
 </RelativeLayout>
