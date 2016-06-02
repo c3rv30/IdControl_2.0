@@ -92,6 +92,8 @@ public class MainActivity extends Activity {
 		intentFilter.addAction("com.zkc.scancode");
 		this.registerReceiver(scanBroadcastReceiver, intentFilter);
 		
+		// WEA
+		getActionBar().setDisplayHomeAsUpEnabled(true);
 			
 	}
 
@@ -129,6 +131,7 @@ public class MainActivity extends Activity {
 			intent.setClass(MainActivity.this, ActivityQrcodeSetting.class);
 			startActivity(intent);
 		}
+		finish();
 		return super.onOptionsItemSelected(item);
 	}
 
