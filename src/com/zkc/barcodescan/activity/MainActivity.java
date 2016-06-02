@@ -126,13 +126,16 @@ public class MainActivity extends Activity {
 			Intent intent = new Intent();
 			intent.setClass(MainActivity.this, ActivityBarcodeSetting.class);
 			startActivity(intent);
+			return super.onOptionsItemSelected(item);
 		} else if (item.getItemId() == 2) {
 			Intent intent = new Intent();
 			intent.setClass(MainActivity.this, ActivityQrcodeSetting.class);
 			startActivity(intent);
+			return super.onOptionsItemSelected(item);
 		}
 		finish();
-		return super.onOptionsItemSelected(item);
+		return true;
+		
 	}
 
 	@Override
