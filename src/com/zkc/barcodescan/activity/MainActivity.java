@@ -180,12 +180,13 @@ public class MainActivity extends Activity {
 		public void onReceive(Context context, Intent intent) {
 			// TODO Auto-generated method stub
 			String text = intent.getExtras().getString("code");
+			//Log.i(TAG, "MyBroadcastReceiver code:" + text);
+			//et_code.setText(text);			
+			
 			String sCadena = text;
 			String sSubcadena = sCadena.substring(0,9);
 			Log.i(TAG, "MyBroadcastReceiver code:" + sSubcadena);
-			et_code.setText(sSubcadena );
-			//Log.i(TAG, "MyBroadcastReceiver code:" + sSubcadena);
-			//et_code.setText(sSubcadena);			
+			et_code.setText(sSubcadena );		
 		}
 	}
 }
