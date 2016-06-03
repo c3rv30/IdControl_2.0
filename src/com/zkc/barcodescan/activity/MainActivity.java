@@ -182,21 +182,25 @@ public class MainActivity extends Activity {
 			String text = intent.getExtras().getString("code");
 			
 			String rut = text;
-			String newCed = "https://";
+			String sSubcadena = rut.substring(0,5);
 			
-			if(rut.substring(0,7).equals(newCed)){
-				rut.substring(52, 61);
+			String newCed = "https";
+			String igual = "";
+			String sinGuion = "";
+			
+			if(sSubcadena.equals(newCed)){
+				igual = text.substring(52,62);
+				sinGuion = igual.replace("-", "");
+			}else{
+				sinGuion = text.substring(0,9);			
 			}
 			
 			
+			Log.i(TAG, "MyBroadcastReceiver code:" + sinGuion);
+			et_code.setText(sinGuion);			
 			
-			
-			
-			Log.i(TAG, "MyBroadcastReceiver code:" + rut);
-			et_code.setText(rut);			
-			
-			String sCadena = text;
-			String sSubcadena = sCadena.substring(0,9);
+			//String sCadena = text;
+			//String sSubcadena = sCadena.substring(0,9);
 			
 			//String modif = sSubcadena.replace(" ", "");
 			//String modif = sSubcadena.trim();
