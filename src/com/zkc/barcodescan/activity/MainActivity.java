@@ -2,9 +2,12 @@ package com.zkc.barcodescan.activity;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.blacklist.sync.DBController;
+import com.blacklist.sync.MainActivitySync;
 import com.zkc.Service.CaptureService;
 import com.zkc.barcodescan.R;
 
@@ -24,6 +27,9 @@ import android.view.View.OnClickListener;
 import android.view.ViewConfiguration;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListAdapter;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
 
 public class MainActivity extends Activity {
 	private static final String TAG = "MainActivity";
@@ -33,6 +39,9 @@ public class MainActivity extends Activity {
 	private Button emptyBtn;
 
 	List<Map<String, String>> listData = new ArrayList<Map<String, String>>();
+	
+	// DB Class to perform DB related operations
+    DBController controller = new DBController(this);
 
 	/*
 	 * private byte[] choosedData = new byte[] { 0x07, (byte) 0xC6, 0x04, 0x08,
@@ -197,7 +206,29 @@ public class MainActivity extends Activity {
 			
 			
 			Log.i(TAG, "MyBroadcastReceiver code:" + sinGuion);
-			et_code.setText(sinGuion);			
+			et_code.setText(sinGuion);
+			
+			
+			
+			
+			// Get User records from SQLite DB
+	        ArrayList<HashMap<String, String>> userList = controller.getBlackUser();
+	        // If users exists in SQLite DB
+	        if (userList.size() != 0) {
+	        	
+	        	
+	            // Set the User Array list in ListView
+	            ListAdapter adapter = new SimpleAdapter(MainActivity.this, userList, R.layout.view_user_entry, new String[] {
+	                    "userId", "userName" }, new int[] { R.id.userId, R.id.userName });	            
+	            ListView myList = (ListView) findViewById(android.R.id.list);
+	            myList.setAdapter(adapter);
+	        }
+	        
+	        
+	        
+	        
+	        
+	        
 			
 			//String sCadena = text;
 			//String sSubcadena = sCadena.substring(0,9);

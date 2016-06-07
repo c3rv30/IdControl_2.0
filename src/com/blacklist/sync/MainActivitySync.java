@@ -45,15 +45,21 @@ public class MainActivitySync extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         // Get User records from SQLite DB
-        ArrayList<HashMap<String, String>> userList = controller.getAllUsers();
+        ArrayList<HashMap<String, String>> userList = controller.getAllUsers();        
+        
         // If users exists in SQLite DB
         if (userList.size() != 0) {
-            // Set the User Array list in ListView
-            ListAdapter adapter = new SimpleAdapter(MainActivitySync.this, userList, R.layout.view_user_entry, new String[] {
-                    "userId", "userName" }, new int[] { R.id.userId, R.id.userName });
-            ListView myList = (ListView) findViewById(android.R.id.list);
+            // Set the User Array list in ListView        
+        	
+            ListAdapter adapter = new SimpleAdapter(MainActivitySync.this, userList, R.layout.view_user_entry, new String[] {"userId", "userName" }, new int[] { R.id.userId, R.id.userName });            
+            ListView myList = (ListView) findViewById(android.R.id.list);            
             myList.setAdapter(adapter);
+            
         }
+        
+        
+        
+        
         // Initialize Progress Dialog properties
         prgDialog = new ProgressDialog(this);
         prgDialog.setMessage("Transferring Data from Remote MySQL DB and Syncing SQLite. Please wait...");
@@ -75,7 +81,7 @@ public class MainActivitySync extends Activity {
         syncSQLiteMySQLDB();
     }
     
-    /* 
+/* 
     // Options Menu (ActionBar Menu)
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -98,7 +104,7 @@ public class MainActivitySync extends Activity {
         }
         return super.onOptionsItemSelected(item);
     }
-	*/
+*/
 
     // Method to Sync MySQL to SQLite DB
     public void syncSQLiteMySQLDB() {

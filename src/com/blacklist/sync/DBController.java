@@ -62,11 +62,17 @@ public class DBController extends SQLiteOpenHelper {
      * @return
      */
     public ArrayList<HashMap<String, String>> getAllUsers() {
+    	
         ArrayList<HashMap<String, String>> usersList;
+        
         usersList = new ArrayList<HashMap<String, String>>();
+        
         String selectQuery = "SELECT * FROM users";
+        
         SQLiteDatabase database = this.getWritableDatabase();
+        
         Cursor cursor = database.rawQuery(selectQuery, null);
+        
         if (cursor.moveToFirst()) {
             do {
                 HashMap<String, String> map = new HashMap<String, String>();
@@ -78,4 +84,41 @@ public class DBController extends SQLiteOpenHelper {
         database.close();
         return usersList;
     }    
+    
+    
+    public ArrayList<HashMap<String, String>> getBlackUser() {
+    	
+    	
+        ArrayList<HashMap<String, String>> usersList;
+        
+        usersList = new ArrayList<HashMap<String, String>>();
+        
+        String selectQuery = "SELECT * FROM users";
+        
+        SQLiteDatabase database = this.getWritableDatabase();
+        
+        Cursor cursor = database.rawQuery(selectQuery, null);
+        
+        if (cursor.moveToFirst()) {
+            do {
+                HashMap<String, String> map = new HashMap<String, String>();
+                map.put("userId", cursor.getString(0));
+                map.put("userName", cursor.getString(1));
+                usersList.add(map);
+            } while (cursor.moveToNext());
+        }
+        database.close();
+        return usersList;
+        }  
 }
+
+
+
+
+
+
+
+
+
+
+

@@ -9,7 +9,12 @@ import com.zkc.barcodescan.activity.MainActivity;
 
 import android.app.Activity;
 
+import com.blacklist.sync.MainActivitySync;
+
 public class ActivityHome extends Activity {
+	
+	DBController controller = new DBController(this);
+	MainActivitySync sync = new MainActivitySync();
 	
 	@Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,14 +28,13 @@ public class ActivityHome extends Activity {
         startActivity(intent);
     }
     
-  //Button Scan activity
+  //Button Estadistics
     public void btnStadistic(View v){
         
     }
     
-  //Button Scan activity
+  //Button Sync DB
     public void btnSync(View v){
-        
-    }
-	
+    	sync.syncDB(v); 	        
+    }	
 }
