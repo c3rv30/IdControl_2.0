@@ -34,7 +34,7 @@ public class ActivityHome extends Activity {
     }
     
   //Button Sync DB
-    public void btnSync(View v){
-    	sync.syncDB(v); 	        
+    public void btnSync(){
+    	sync.syncDB(); 	        
     }	
 }
