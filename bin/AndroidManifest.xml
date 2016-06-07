@@ -76,9 +76,7 @@
             android:name="com.zkc.barcodescan.activity.MainActivity"
             android:label="@string/app_name"
             android:screenOrientation="locked" >
-        </activity> 
-     
-        
+        </activity>         
         
         <activity
             android:name="com.zkc.barcodescan.activity.ActivityBarcodeSetting"
@@ -98,6 +96,12 @@
             android:screenOrientation="locked" >
         </activity>
         
+        <activity
+            android:name="com.blacklist.sync.MainActivitySync"
+            android:label="@string/app_name" 
+            android:screenOrientation="locked" >
+        </activity>      
+        
 
         
         
@@ -106,7 +110,7 @@
         <!-- Register MyService -->
         <service
             android:name=".MyService"
-            android:enabled="true" />
+            android:enabled="true" />        
         
         <!--  Register BroadCase Receiver -->
         <receiver

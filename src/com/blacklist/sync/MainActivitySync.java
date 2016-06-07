@@ -44,7 +44,7 @@ public class MainActivitySync extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        // Get User records from SQLite DB
+/*        // Get User records from SQLite DB
         ArrayList<HashMap<String, String>> userList = controller.getAllUsers();        
         
         // If users exists in SQLite DB
@@ -55,7 +55,7 @@ public class MainActivitySync extends Activity {
             ListView myList = (ListView) findViewById(android.R.id.list);            
             myList.setAdapter(adapter);            
         }
-        
+        */
         
         
         

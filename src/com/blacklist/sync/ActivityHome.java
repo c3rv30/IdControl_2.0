@@ -13,7 +13,6 @@ import com.blacklist.sync.MainActivitySync;
 
 public class ActivityHome extends Activity {
 	
-	DBController controller = new DBController(this);
 	MainActivitySync sync = new MainActivitySync();
 	
 	@Override
