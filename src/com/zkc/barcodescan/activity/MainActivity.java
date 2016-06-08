@@ -101,7 +101,7 @@ public class MainActivity extends Activity {
 		intentFilter.addAction("com.zkc.scancode");
 		this.registerReceiver(scanBroadcastReceiver, intentFilter);
 		
-		// WEA
+		// Bar Bacl layout
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 			
 	}
