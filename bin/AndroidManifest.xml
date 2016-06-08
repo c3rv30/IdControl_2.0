@@ -100,10 +100,8 @@
             android:name="com.blacklist.sync.MainActivitySync"
             android:label="@string/app_name" 
             android:screenOrientation="locked" >
-        </activity>      
-        
-
-        
+        </activity>
+                
         
         
         

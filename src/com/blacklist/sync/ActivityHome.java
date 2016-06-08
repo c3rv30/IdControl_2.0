@@ -13,7 +13,7 @@ import com.blacklist.sync.MainActivitySync;
 
 public class ActivityHome extends Activity {
 	
-	MainActivitySync sync = new MainActivitySync();
+	
 	
 	@Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +33,8 @@ public class ActivityHome extends Activity {
     }
     
   //Button Sync DB
-    public void btnSync(){
-    	sync.syncDB(); 	        
+    public void btnSync(View view){
+    	Intent intent = new Intent(this, MainActivitySync.class);
+        startActivity(intent);    	        
     }	
 }
