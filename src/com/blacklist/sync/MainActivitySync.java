@@ -72,6 +72,8 @@ public class MainActivitySync extends Activity {
         // Alarm Manager calls BroadCast for every Ten seconds (10 * 1000), BroadCase further calls service to check if new records are inserted in
         // Remote MySQL DB
         //alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, Calendar.getInstance().getTimeInMillis() + 5000, 60 * 1000, pendingIntent);
+        
+        getActionBar().setDisplayHomeAsUpEnabled(true);
     }
     
   //Button Sinc. BlackList
@@ -93,7 +95,7 @@ public class MainActivitySync extends Activity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here.
-        //int id = item.getItemId();
+        int id = item.getItemId();
         // When Sync action button is clicked
         /*if (id == R.id.refresh) {
             // Transfer data from remote MySQL DB to SQLite on Android and perform Sync
