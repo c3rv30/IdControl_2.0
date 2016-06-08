@@ -75,7 +75,7 @@ public class MainActivitySync extends Activity {
     }
     
   //Button Sinc. BlackList
-    public void syncDB(){
+    public void syncDB(View v){
         controller.deleteFromTable();
         syncSQLiteMySQLDB();
     }
