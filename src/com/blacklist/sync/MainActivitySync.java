@@ -80,30 +80,32 @@ public class MainActivitySync extends Activity {
         syncSQLiteMySQLDB();
     }
     
-/* 
+ 
     // Options Menu (ActionBar Menu)
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
+        //getMenuInflater().inflate(R.menu.main, menu);
+        return super.onCreateOptionsMenu(menu);
     }
 
     // When Options Menu is selected
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here.
-        int id = item.getItemId();
+        //int id = item.getItemId();
         // When Sync action button is clicked
-        if (id == R.id.refresh) {
+        /*if (id == R.id.refresh) {
             // Transfer data from remote MySQL DB to SQLite on Android and perform Sync
             controller.deleteFromTable();
             syncSQLiteMySQLDB();
             return true;
-        }
-        return super.onOptionsItemSelected(item);
+        }*/
+        //return super.onOptionsItemSelected(item);
+        finish();
+        return true;
     }
-*/
+
 
     // Method to Sync MySQL to SQLite DB
     public void syncSQLiteMySQLDB() {
