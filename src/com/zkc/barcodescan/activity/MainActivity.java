@@ -13,6 +13,7 @@ import com.zkc.barcodescan.R;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -30,6 +31,7 @@ import android.widget.EditText;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.Toast;
 
 public class MainActivity extends Activity {
 	private static final String TAG = "MainActivity";
@@ -42,6 +44,7 @@ public class MainActivity extends Activity {
 	
 	// DB Class to perform DB related operations
     DBController controller = new DBController(this);
+  
 
 	/*
 	 * private byte[] choosedData = new byte[] { 0x07, (byte) 0xC6, 0x04, 0x08,
@@ -183,6 +186,11 @@ public class MainActivity extends Activity {
 							}
 						}).setNegativeButton(R.string.popup_no, null).show();
 	}
+	
+	public void prueba1() {
+        Toast toast = Toast.makeText(this, "Es Igual", Toast.LENGTH_SHORT);
+        toast.show();        
+    }
 
 	class ScanBroadcastReceiver extends BroadcastReceiver {
 		@Override
@@ -199,20 +207,18 @@ public class MainActivity extends Activity {
 			
 			if(sSubcadena.equals(newCed)){
 				igual = text.substring(52,62);
-				sinGuion = igual.replace("-", "");
+				sinGuion = igual.replace("-", "");      
+		        
 			}else{
-				sinGuion = text.substring(0,9);			
-			}
-			
-			
-			Log.i(TAG, "MyBroadcastReceiver code:" + sinGuion);
-			et_code.setText(sinGuion);
-			
-	        
-	        
-	        
-	        
-	        
+				sinGuion = text.substring(0,9);
+				// Get User records from SQLite DB
+		        ArrayList<HashMap<String, String>> userList = controller.getBlackUser(sinGuion); 
+		        // If users exists in SQLite DB
+		        if (userList.size() != 0){
+		  
+		        	Log.i(TAG, "MyBroadcastReceiver code:" + sinGuion);
+					et_code.setText(sinGuion);		        
+		        }		               
 			
 			//String sCadena = text;
 			//String sSubcadena = sCadena.substring(0,9);
@@ -230,4 +236,5 @@ public class MainActivity extends Activity {
 			//et_code.setText(modif+igual);		
 		}
 	}
+} 
 }

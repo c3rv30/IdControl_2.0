@@ -61,18 +61,12 @@ public class DBController extends SQLiteOpenHelper {
      * Get list of Users from SQLite DB as Array List
      * @return
      */
-    public ArrayList<HashMap<String, String>> getAllUsers() {
-    	
-        ArrayList<HashMap<String, String>> usersList;
-        
-        usersList = new ArrayList<HashMap<String, String>>();
-        
-        String selectQuery = "SELECT * FROM users";
-        
-        SQLiteDatabase database = this.getWritableDatabase();
-        
-        Cursor cursor = database.rawQuery(selectQuery, null);
-        
+    public ArrayList<HashMap<String, String>> getAllUsers() {    	
+        ArrayList<HashMap<String, String>> usersList;        
+        usersList = new ArrayList<HashMap<String, String>>();        
+        String selectQuery = "SELECT * FROM users";        
+        SQLiteDatabase database = this.getWritableDatabase();        
+        Cursor cursor = database.rawQuery(selectQuery, null);        
         if (cursor.moveToFirst()) {
             do {
                 HashMap<String, String> map = new HashMap<String, String>();
@@ -86,19 +80,14 @@ public class DBController extends SQLiteOpenHelper {
     }    
     
     
-    public ArrayList<HashMap<String, String>> getBlackUser() {
+    public ArrayList<HashMap<String, String>> getBlackUser(String rut) {    	
     	
-    	
-        ArrayList<HashMap<String, String>> usersList;
-        
-        usersList = new ArrayList<HashMap<String, String>>();
-        
-        String selectQuery = "SELECT * FROM users";
-        
-        SQLiteDatabase database = this.getWritableDatabase();
-        
-        Cursor cursor = database.rawQuery(selectQuery, null);
-        
+    	String rut_black = rut;
+        ArrayList<HashMap<String, String>> usersList;        
+        usersList = new ArrayList<HashMap<String, String>>();        
+        String selectQuery = "SELECT * FROM users WHERE userName = '"+rut_black+"'";        
+        SQLiteDatabase database = this.getWritableDatabase();        
+        Cursor cursor = database.rawQuery(selectQuery, null);        
         if (cursor.moveToFirst()) {
             do {
                 HashMap<String, String> map = new HashMap<String, String>();
@@ -110,7 +99,7 @@ public class DBController extends SQLiteOpenHelper {
         database.close();
         return usersList;
         }  
-}
+    }
 
 
 
