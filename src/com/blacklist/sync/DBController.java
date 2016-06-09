@@ -5,9 +5,13 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
+import android.widget.EditText;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+
+import com.zkc.barcodescan.R;
 
 /**
  * Created by c3rv30 on 18-05-16.
@@ -24,6 +28,7 @@ public class DBController extends SQLiteOpenHelper {
  // Create tables
     @Override
     public void onCreate(SQLiteDatabase database) {
+    	
         String query;
         query = "CREATE TABLE users ( userId INTEGER, userName TEXT)";
         database.execSQL(query);
@@ -79,13 +84,21 @@ public class DBController extends SQLiteOpenHelper {
         return usersList;
     }    
     
+    public String parametro(String rut){
+    	String rut1 = rut;
+    	return rut1;
+    }
     
-    public ArrayList<HashMap<String, String>> getBlackUser(String rut) {    	
-    	
-    	String rut_black = rut;
+    
+    
+    public ArrayList<HashMap<String, String>> getBlackUser(String rut) 
+    {
+    	String parametro = rut;
+    	System.out.println(parametro);
         ArrayList<HashMap<String, String>> usersList;        
         usersList = new ArrayList<HashMap<String, String>>();        
-        String selectQuery = "SELECT * FROM users WHERE userName = '"+rut_black+"'";        
+        String selectQuery = "SELECT * FROM users WHERE userName = '" + parametro + "'";
+        
         SQLiteDatabase database = this.getWritableDatabase();        
         Cursor cursor = database.rawQuery(selectQuery, null);        
         if (cursor.moveToFirst()) {
@@ -97,9 +110,24 @@ public class DBController extends SQLiteOpenHelper {
             } while (cursor.moveToNext());
         }
         database.close();
-        return usersList;
+        return usersList;        
         }  
-    }
+    
+//    public DBController recuperarUsuarioNegro(String rut) {
+//    	String rut_black = rut;
+//        SQLiteDatabase db = getReadableDatabase();
+//        String selectQuery = "SELECT * FROM users WHERE userName = '" + rut_black + "'";      
+//        Cursor cursor = db.rawQuery(selectQuery, null);
+//        if(cursor != null) {
+//            cursor.moveToFirst();
+//        }        
+//        Contactos contactos = new Contactos(c.getInt(0), c.getString(1), 
+//                c.getInt(2), c.getString(3));
+//        db.close();
+//        c.close();
+//        return contactos;
+//    }
+}
 
 
 

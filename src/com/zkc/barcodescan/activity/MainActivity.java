@@ -204,6 +204,7 @@ public class MainActivity extends Activity {
 			String newCed = "https";
 			String igual = "";
 			String sinGuion = "";
+
 			
 			if(sSubcadena.equals(newCed)){
 				igual = text.substring(52,62);
@@ -215,10 +216,10 @@ public class MainActivity extends Activity {
 		        ArrayList<HashMap<String, String>> userList = controller.getBlackUser(sinGuion); 
 		        // If users exists in SQLite DB
 		        if (userList.size() != 0){
-		  
 		        	Log.i(TAG, "MyBroadcastReceiver code:" + sinGuion);
 					et_code.setText(sinGuion);		        
-		        }		               
+		        }		
+		        
 			
 			//String sCadena = text;
 			//String sSubcadena = sCadena.substring(0,9);
