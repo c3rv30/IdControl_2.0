@@ -91,13 +91,15 @@ public class DBController extends SQLiteOpenHelper {
     
     
     
-    public ArrayList<HashMap<String, String>> getBlackUser(String rut) 
+    public ArrayList<HashMap<String, String>> getBlackUser(String envio) 
     {
-    	String parametro = rut;
-    	System.out.println(parametro);
+    	String param = "";
+    	param = envio;
+    	
+    	
         ArrayList<HashMap<String, String>> usersList;        
         usersList = new ArrayList<HashMap<String, String>>();        
-        String selectQuery = "SELECT * FROM users WHERE userName = '" + parametro + "'";
+        String selectQuery = "SELECT * FROM users WHERE userName = '"+param+"'";
         
         SQLiteDatabase database = this.getWritableDatabase();        
         Cursor cursor = database.rawQuery(selectQuery, null);        

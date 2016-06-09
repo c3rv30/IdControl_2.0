@@ -208,7 +208,8 @@ public class MainActivity extends Activity {
 			
 			if(sSubcadena.equals(newCed)){
 				igual = text.substring(52,62);
-				sinGuion = igual.replace("-", "");      
+				sinGuion = igual.replace("-", "");
+
 		        
 			}else{
 				sinGuion = text.substring(0,9);
