@@ -91,6 +91,10 @@ public class DBController extends SQLiteOpenHelper {
     
     
     
+    /**
+     * Get Rut of Users from SQLite DB as Array List
+     * @return
+     */
     public ArrayList<HashMap<String, String>> getBlackUser(String envio) 
     {
     	String param = "";
