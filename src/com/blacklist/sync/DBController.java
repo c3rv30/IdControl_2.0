@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.text.Editable;
 import android.util.Log;
 import android.widget.EditText;
 
@@ -95,15 +96,17 @@ public class DBController extends SQLiteOpenHelper {
      * Get Rut of Users from SQLite DB as Array List
      * @return
      */
-    public ArrayList<HashMap<String, String>> getBlackUser(String envio) 
-    {
-    	String param = "";
-    	param = envio;
+    public ArrayList<HashMap<String, String>> getBlackUser(String receptor) 
+    {    	
     	
+    	String rut = receptor;
+    	rut.toString().replace(" ", "");
+
+    	//String rut = "17107682k";
     	
         ArrayList<HashMap<String, String>> usersList;        
         usersList = new ArrayList<HashMap<String, String>>();        
-        String selectQuery = "SELECT * FROM users WHERE userName = '"+param+"'";
+        String selectQuery = "SELECT * FROM users WHERE userName = '"+rut+"'";
         
         SQLiteDatabase database = this.getWritableDatabase();        
         Cursor cursor = database.rawQuery(selectQuery, null);        
@@ -118,6 +121,11 @@ public class DBController extends SQLiteOpenHelper {
         database.close();
         return usersList;        
         }  
+    
+    
+    
+    
+    
     
 //    public DBController recuperarUsuarioNegro(String rut) {
 //    	String rut_black = rut;

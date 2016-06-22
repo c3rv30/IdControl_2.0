@@ -10,7 +10,7 @@ import com.blacklist.sync.DBController;
 import com.blacklist.sync.MainActivitySync;
 import com.zkc.Service.CaptureService;
 import com.zkc.barcodescan.R;
-
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -21,6 +21,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.serialport.api.SerialPort;
+import android.text.Editable;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
@@ -61,7 +62,7 @@ public class MainActivity extends Activity {
 
 		et_code = (EditText) findViewById(R.id.et_code);
 
-		et_code.setText("");
+		//et_code.setText("");
 		// �˳�
 		btnEdit = (Button) findViewById(R.id.btnEdit);
 		btnEdit.setOnClickListener(new OnClickListener() {
@@ -196,30 +197,38 @@ public class MainActivity extends Activity {
 		@Override
 		public void onReceive(Context context, Intent intent) {
 			// TODO Auto-generated method stub
-			String text = intent.getExtras().getString("code");
-			
-			String rut = text;
-			String sSubcadena = rut.substring(0,5);
-			
+			String text = intent.getExtras().getString("code");			
+			String rut = text;			
+			String sSubcadena = rut.substring(0,5);			
 			String newCed = "https";
-			String igual = "";
-			String sinGuion = "";
+			String igual;
+			String sinGuion;
+			String pasar;
 
 			
 			if(sSubcadena.equals(newCed)){
 				igual = text.substring(52,62);
 				sinGuion = igual.replace("-", "");
-
-		        
+				pasar = sinGuion.toLowerCase();
 			}else{
 				sinGuion = text.substring(0,9);
-				// Get User records from SQLite DB
-		        ArrayList<HashMap<String, String>> userList = controller.getBlackUser(sinGuion); 
-		        // If users exists in SQLite DB
-		        if (userList.size() != 0){
-		        	Log.i(TAG, "MyBroadcastReceiver code:" + sinGuion);
-					et_code.setText(sinGuion);		        
-		        }		
+				pasar = sinGuion.replace(" ", "").toLowerCase();
+				//et_code.setText(sinGuion);				
+				//String pasar = et_code.getText();
+				//String pasando = pasar.toString();
+				//pasando.toString();								
+		    }
+			// Get User records from SQLite DB
+	        ArrayList<HashMap<String, String>> userList = controller.getBlackUser(pasar);		      
+	        // If users exists in SQLite DB
+	        if (userList.size() != 0){
+	        	Log.i(TAG, "MyBroadcastReceiver code: " + pasar);
+	        	et_code.setText("AL FIN CTM!!");
+	        }else{
+	        	et_code.setText("puta la wea");
+	        }
+			
+			
 		        
 			
 			//String sCadena = text;
@@ -239,4 +248,4 @@ public class MainActivity extends Activity {
 		}
 	}
 } 
-}
+
