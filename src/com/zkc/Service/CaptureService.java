@@ -74,9 +74,12 @@ public class CaptureService extends Service {
 			// TODO Auto-generated method stub
 			String barCodeStr = msg.obj.toString();
 			////barCodeStr=barCodeStr.trim();
-			if (beepManager != null) {
-				beepManager.playBeepSoundAndVibrate();
-			}
+			
+			// SONIDO 
+			//if (beepManager != null) {
+			//	beepManager.playBeepSoundAndVibrate();
+			//}
+			
 			Intent intentBroadcast = new Intent();
 			intentBroadcast.setAction("com.zkc.scancode");
 			intentBroadcast.putExtra("code", barCodeStr);

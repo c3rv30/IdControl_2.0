@@ -28,16 +28,17 @@ public final class R {
         public static final int LinearLayout1=0x7f080000;
         public static final int btnEdit=0x7f080002;
         public static final int btnOpen=0x7f080003;
-        public static final int btn_esta=0x7f080006;
-        public static final int btn_scan=0x7f080005;
-        public static final int btn_sync=0x7f080007;
-        public static final int btnsync=0x7f080009;
+        public static final int btn_esta=0x7f080007;
+        public static final int btn_scan=0x7f080006;
+        public static final int btn_sync=0x7f080008;
+        public static final int btnsync=0x7f08000a;
         public static final int emptyBtn=0x7f080004;
         public static final int et_code=0x7f080001;
-        public static final int relativeLayout1=0x7f08000a;
-        public static final int textView=0x7f080008;
-        public static final int userId=0x7f08000b;
-        public static final int userName=0x7f08000c;
+        public static final int relativeLayout1=0x7f08000b;
+        public static final int textView=0x7f080009;
+        public static final int txtMenu=0x7f080005;
+        public static final int userId=0x7f08000c;
+        public static final int userName=0x7f08000d;
     }
     public static final class layout {
         public static final int activity_barcode_barcodesetting=0x7f030000;
@@ -57,6 +58,7 @@ public final class R {
         public static final int beep=0x7f040000;
         public static final int bide=0x7f040001;
         public static final int camera_click=0x7f040002;
+        public static final int valid_beep=0x7f040003;
     }
     public static final class string {
         public static final int action_1d=0x7f060002;
@@ -76,6 +78,8 @@ public final class R {
         public static final int estadisticas=0x7f060014;
         public static final int exit=0x7f06000c;
         public static final int open_scan=0x7f06000d;
+        /** <string name="popup_message">Device quit, you have to exit the application do?</string>  
+         */
         public static final int popup_message=0x7f060010;
         public static final int popup_no=0x7f060012;
         public static final int popup_title=0x7f06000f;

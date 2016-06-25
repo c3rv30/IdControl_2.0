@@ -1,6 +1,5 @@
 <?xml version = "1.0" encoding = "utf-8"?>
 <resources>
-
     <string name="app_name">IdControl</string>
     <string name="action_settings">Settings</string>
     <string name="action_1d">barcode modules set</string>
@@ -13,11 +12,12 @@
     <string name="action_encoding_tip">Please select a code type</string>
     <string name="action_setsuccess">Settings success</string>
     <string name="action_2d">Qr modules set</string>
-    <string name="exit">Exit</string>
-    <string name="open_scan">Scanear</string>
-    <string name="empty">Empty</string>
-    <string name="popup_title">Select</string>
-    <string name="popup_message">Device quit, you have to exit the application do?</string>
+    <string name="exit">SALIR</string>
+    <string name="open_scan">ESCANEAR</string>
+    <string name="empty">VACIAR</string>
+    <string name="popup_title">Selecione</string>
+    <!--<string name="popup_message">Device quit, you have to exit the application do?</string>  -->
+    <string name="popup_message">Desea volver al menu principal?</string>
     <string name="popup_yes">OK</string>
     <string name="popup_no">Cancel</string>
 	<string name="sincronizar">SINCRONIZAR</string>

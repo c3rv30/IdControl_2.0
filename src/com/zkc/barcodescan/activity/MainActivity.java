@@ -6,6 +6,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import android.media.MediaPlayer;
+
+
 import com.blacklist.sync.DBController;
 import com.blacklist.sync.MainActivitySync;
 import com.zkc.Service.CaptureService;
@@ -192,6 +195,11 @@ public class MainActivity extends Activity {
         Toast toast = Toast.makeText(this, "Es Igual", Toast.LENGTH_SHORT);
         toast.show();        
     }
+	
+	public void sonido(){
+		MediaPlayer mp = MediaPlayer.create(this, R.raw.valid_beep);
+    	mp.start();
+	}
 
 	class ScanBroadcastReceiver extends BroadcastReceiver {
 		@Override
@@ -222,13 +230,12 @@ public class MainActivity extends Activity {
 	        ArrayList<HashMap<String, String>> userList = controller.getBlackUser(pasar);		      
 	        // If users exists in SQLite DB
 	        if (userList.size() != 0){
-	        	Log.i(TAG, "MyBroadcastReceiver code: " + pasar);
+	        	Log.i(TAG, "MyBroadcastReceiver code: " + pasar);	     
 	        	et_code.setText("AL FIN CTM!!");
+	        	sonido();
 	        }else{
 	        	et_code.setText("puta la wea");
-	        }
-			
-			
+	        }			
 		        
 			
 			//String sCadena = text;

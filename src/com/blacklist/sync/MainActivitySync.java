@@ -44,7 +44,7 @@ public class MainActivitySync extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_sync);
-       // Get User records from SQLite DB
+       /*// Get User records from SQLite DB
         ArrayList<HashMap<String, String>> userList = controller.getAllUsers();
         // If users exists in SQLite DB
         if (userList.size() != 0) {
@@ -52,7 +52,7 @@ public class MainActivitySync extends Activity {
             ListAdapter adapter = new SimpleAdapter(MainActivitySync.this, userList, R.layout.view_user_entry, new String[] {"userId", "userName" }, new int[] { R.id.userId, R.id.userName });            
             ListView myList = (ListView) findViewById(android.R.id.list);            
             myList.setAdapter(adapter);            
-        }
+        }*/
         
         
         
@@ -123,6 +123,7 @@ public class MainActivitySync extends Activity {
                 prgDialog.hide();
                 // Update SQLite DB with response sent by getusers.php
                 updateSQLite(response);
+                Toast.makeText(getApplicationContext(), "Base de Datos Actualizada", Toast.LENGTH_LONG).show();
             }
             // When error occured
             @Override
@@ -176,7 +177,7 @@ public class MainActivitySync extends Activity {
                 // Inform Remote MySQL DB about the completion of Sync activity by passing Sync status of Users
                 updateMySQLSyncSts(gson.toJson(usersynclist));
                 // Reload the Main Activity
-                reloadActivity();
+                //reloadActivity();
             }
         } catch (JSONException e) {
             // TODO Auto-generated catch block
