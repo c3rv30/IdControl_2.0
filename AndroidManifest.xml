@@ -102,6 +102,11 @@
             android:screenOrientation="locked" >
         </activity>
                 
+        <activity
+            android:name="com.blacklist.sync.ActivityEstadisticas"
+            android:label="@string/app_name" 
+            android:screenOrientation="locked" >
+        </activity>
         
         
         

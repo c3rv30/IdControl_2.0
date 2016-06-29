@@ -52,9 +52,7 @@ public class MainActivitySync extends Activity {
             ListAdapter adapter = new SimpleAdapter(MainActivitySync.this, userList, R.layout.view_user_entry, new String[] {"userId", "userName" }, new int[] { R.id.userId, R.id.userName });            
             ListView myList = (ListView) findViewById(android.R.id.list);            
             myList.setAdapter(adapter);            
-        }*/
-        
-        
+        }*/        
         
         // Initialize Progress Dialog properties
         prgDialog = new ProgressDialog(this);
@@ -210,5 +208,4 @@ public class MainActivitySync extends Activity {
         Intent objIntent = new Intent(getApplicationContext(), MainActivitySync.class);
         startActivity(objIntent);
     }
-
 }

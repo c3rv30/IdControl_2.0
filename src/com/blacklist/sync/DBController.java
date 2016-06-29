@@ -30,16 +30,22 @@ public class DBController extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase database) {
     	
-        String query;
+        String query, query2;
         query = "CREATE TABLE users ( userId INTEGER, userName TEXT)";
         database.execSQL(query);
+        query2 = "CREATE TABLE estadisticas ( rut TEXT, fecha TEXT, asistente TEXT)";
+        database.execSQL(query2);
     }
+    
+    
 
     @Override
     public void onUpgrade(SQLiteDatabase database, int oldVersion, int newVersion) {
-        String query;
+        String query, query2;
         query = "DROP TABLE IF EXISTS users";
         database.execSQL(query);
+        query2 = "DROP TABLE IF EXISTS estadisticas";
+        database.execSQL(query2);
         onCreate(database);
     }
 
@@ -84,14 +90,8 @@ public class DBController extends SQLiteOpenHelper {
         database.close();
         return usersList;
     }    
-    
-    public String parametro(String rut){
-    	String rut1 = rut;
-    	return rut1;
-    }
-    
-    
-    
+   
+ 
     /**
      * Get Rut of Users from SQLite DB as Array List
      * @return
@@ -101,13 +101,10 @@ public class DBController extends SQLiteOpenHelper {
     	
     	String rut = receptor;
     	rut.toString().replace(" ", "");
-
-    	//String rut = "17107682k";
-    	
+    	//String rut = "17107682k";    	
         ArrayList<HashMap<String, String>> usersList;        
         usersList = new ArrayList<HashMap<String, String>>();        
-        String selectQuery = "SELECT * FROM users WHERE userName = '"+rut+"'";
-        
+        String selectQuery = "SELECT * FROM users WHERE userName = '"+rut+"'";        
         SQLiteDatabase database = this.getWritableDatabase();        
         Cursor cursor = database.rawQuery(selectQuery, null);        
         if (cursor.moveToFirst()) {
@@ -122,25 +119,6 @@ public class DBController extends SQLiteOpenHelper {
         return usersList;        
         }  
     
-    
-    
-    
-    
-    
-//    public DBController recuperarUsuarioNegro(String rut) {
-//    	String rut_black = rut;
-//        SQLiteDatabase db = getReadableDatabase();
-//        String selectQuery = "SELECT * FROM users WHERE userName = '" + rut_black + "'";      
-//        Cursor cursor = db.rawQuery(selectQuery, null);
-//        if(cursor != null) {
-//            cursor.moveToFirst();
-//        }        
-//        Contactos contactos = new Contactos(c.getInt(0), c.getString(1), 
-//                c.getInt(2), c.getString(3));
-//        db.close();
-//        c.close();
-//        return contactos;
-//    }
 }
 
 

@@ -28,8 +28,9 @@ public class ActivityHome extends Activity {
     }
     
   //Button Estadistics
-    public void btnStadistic(View v){
-        
+    public void btnStadistic(View view){
+    	Intent intent = new Intent(this, ActivityEstadisticas.class);
+    	startActivity(intent);        
     }
     
   //Button Sync DB

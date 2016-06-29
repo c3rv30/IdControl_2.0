@@ -23,4 +23,7 @@
 	<string name="sincronizar">SINCRONIZAR</string>
 	<string name="estadisticas">ESTADISTICAS</string>
 	<string name="escanear">ESCANEAR</string>
+	<string name="setDate">Seleccione Fecha</string>
+	
+	<string name="date_selected"></string>
 </resources>

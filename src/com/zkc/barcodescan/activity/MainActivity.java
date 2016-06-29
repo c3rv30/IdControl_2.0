@@ -32,6 +32,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewConfiguration;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -43,6 +44,9 @@ public class MainActivity extends Activity {
 	Button btnOpen, btnEdit;
 	public static EditText et_code;
 	private Button emptyBtn;
+	
+	//ImageView img = (ImageView)findViewById(R.id.imageView);
+	
 
 	List<Map<String, String>> listData = new ArrayList<Map<String, String>>();
 	
@@ -64,7 +68,7 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.activity_barcode_main);
 
 		et_code = (EditText) findViewById(R.id.et_code);
-
+		
 		//et_code.setText("");
 		// �˳�
 		btnEdit = (Button) findViewById(R.id.btnEdit);
@@ -233,14 +237,14 @@ public class MainActivity extends Activity {
 	        	Log.i(TAG, "MyBroadcastReceiver code: " + pasar);	     
 	        	et_code.setText("AL FIN CTM!!");
 	        	sonido();
+	        	//img.setImageResource(R.drawable.valid_image);
 	        }else{
 	        	et_code.setText("puta la wea");
 	        }			
 		        
 			
 			//String sCadena = text;
-			//String sSubcadena = sCadena.substring(0,9);
-			
+			//String sSubcadena = sCadena.substring(0,9);			
 			//String modif = sSubcadena.replace(" ", "");
 			//String modif = sSubcadena.trim();
 			//String rut = "75344465";
