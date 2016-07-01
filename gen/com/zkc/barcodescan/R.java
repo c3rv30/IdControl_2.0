@@ -29,19 +29,20 @@ public final class R {
         public static final int LinearLayout1=0x7f080000;
         public static final int btnEdit=0x7f080002;
         public static final int btnOpen=0x7f080003;
-        public static final int btn_esta=0x7f080009;
-        public static final int btn_scan=0x7f080008;
-        public static final int btn_sync=0x7f08000a;
-        public static final int btnsync=0x7f08000c;
+        public static final int btn_esta=0x7f08000a;
+        public static final int btn_scan=0x7f080009;
+        public static final int btn_sync=0x7f08000b;
+        public static final int btnsync=0x7f08000d;
+        public static final int buttonSetCounts=0x7f080007;
         public static final int buttonSetDate=0x7f080005;
         public static final int emptyBtn=0x7f080004;
         public static final int et_code=0x7f080001;
-        public static final int relativeLayout1=0x7f08000d;
-        public static final int textView=0x7f08000b;
+        public static final int relativeLayout1=0x7f08000e;
+        public static final int textView=0x7f08000c;
         public static final int textView3=0x7f080006;
-        public static final int txtMenu=0x7f080007;
-        public static final int userId=0x7f08000e;
-        public static final int userName=0x7f08000f;
+        public static final int txtMenu=0x7f080008;
+        public static final int userId=0x7f08000f;
+        public static final int userName=0x7f080010;
     }
     public static final class layout {
         public static final int activity_barcode_barcodesetting=0x7f030000;
@@ -53,7 +54,8 @@ public final class R {
         public static final int activity_main=0x7f030006;
         public static final int activity_main_login=0x7f030007;
         public static final int activity_main_sync=0x7f030008;
-        public static final int view_user_entry=0x7f030009;
+        public static final int activity_resultado_estadisticas=0x7f030009;
+        public static final int view_user_entry=0x7f03000a;
     }
     public static final class menu {
         public static final int main=0x7f070000;
@@ -77,7 +79,7 @@ public final class R {
         public static final int action_setsuccess=0x7f06000a;
         public static final int action_settings=0x7f060001;
         public static final int app_name=0x7f060000;
-        public static final int date_selected=0x7f060017;
+        public static final int date_selected=0x7f060018;
         public static final int empty=0x7f06000e;
         public static final int escanear=0x7f060015;
         public static final int estadisticas=0x7f060014;
@@ -89,6 +91,7 @@ public final class R {
         public static final int popup_no=0x7f060012;
         public static final int popup_title=0x7f06000f;
         public static final int popup_yes=0x7f060011;
+        public static final int setCount=0x7f060017;
         public static final int setDate=0x7f060016;
         public static final int sincronizar=0x7f060013;
     }

@@ -27,8 +27,7 @@ public class ActivityEstadisticas extends Activity {
 		
 		dateView = (TextView)findViewById(R.id.textView3);
 		calendar = Calendar.getInstance();
-		year = calendar.get(Calendar.YEAR);
-		
+		year = calendar.get(Calendar.YEAR);		
 		month = calendar.get(Calendar.MONTH);
 		day = calendar.get(Calendar.DAY_OF_MONTH);
 		showDate(year, month+1, day);		
@@ -64,4 +63,17 @@ public class ActivityEstadisticas extends Activity {
 		dateView.setText(new StringBuilder().append(day).append("/")
 				.append(month).append("/").append(year));		
 	}	
+	
+	
+	public String setDateScaner(){
+		dateView.setText(new StringBuilder().append(day).append("/")
+				.append(month).append("/").append(year));
+		String fecha;
+		fecha = dateView.getText().toString().trim();
+		return fecha;
+	}
+	
+	
+	
+	
 }

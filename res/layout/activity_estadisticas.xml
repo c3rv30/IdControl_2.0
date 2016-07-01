@@ -10,6 +10,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
+        android:textSize="23sp"
         android:onClick="setDate"
         android:text="@string/setDate"        
         />     
@@ -20,8 +21,20 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="72dp"
         android:layout_gravity="center"
+        android:textSize="23sp"
         android:text="@string/date_selected"
         android:textAppearance="?android:attr/textAppearanceMedium"        
     	/>
+    
+    <Button 
+        android:id="@+id/buttonSetCounts"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="72dp"
+        android:textSize="23sp"
+        android:onClick="resEstadisticas"
+        android:text="@string/setCount"        
+        />  
     
 </LinearLayout>

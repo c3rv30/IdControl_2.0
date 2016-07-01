@@ -7,7 +7,9 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="match_parent" >       
+       
+        
 
         <EditText
             android:id="@+id/et_code"
@@ -49,9 +51,7 @@
             android:layout_marginBottom="16dp"
             android:focusable="false"
             android:focusableInTouchMode="false"
-            android:text="@string/empty" />
-
-      
+            android:text="@string/empty" />        
 
     </RelativeLayout>
 

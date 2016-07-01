@@ -24,6 +24,6 @@
 	<string name="estadisticas">ESTADISTICAS</string>
 	<string name="escanear">ESCANEAR</string>
 	<string name="setDate">Seleccione Fecha</string>
-	
+	<string name="setCount">Buscar Asistentes</string>	
 	<string name="date_selected"></string>
 </resources>

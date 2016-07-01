@@ -33,7 +33,7 @@ public class DBController extends SQLiteOpenHelper {
         String query, query2;
         query = "CREATE TABLE users ( userId INTEGER, userName TEXT)";
         database.execSQL(query);
-        query2 = "CREATE TABLE estadisticas ( rut TEXT, fecha TEXT, asistente TEXT)";
+        query2 = "CREATE TABLE estadisticas ( rut TEXT, fecha TEXT)";
         database.execSQL(query2);
     }
     
@@ -69,6 +69,15 @@ public class DBController extends SQLiteOpenHelper {
         database.close();
     }
 
+    public void insertRutEstadisticas(HashMap<String, String> queryValues) {
+        SQLiteDatabase database = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("rut", queryValues.get("rut"));
+        values.put("fecha", queryValues.get("fecha"));
+        database.insert("estadisticas", null, values);
+        database.close();
+    }
+    
     /**
      * Get list of Users from SQLite DB as Array List
      * @return

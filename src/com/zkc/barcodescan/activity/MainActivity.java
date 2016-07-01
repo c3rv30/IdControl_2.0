@@ -2,6 +2,7 @@ package com.zkc.barcodescan.activity;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -10,6 +11,7 @@ import android.media.MediaPlayer;
 
 
 import com.blacklist.sync.DBController;
+import com.blacklist.sync.ActivityEstadisticas;
 import com.blacklist.sync.MainActivitySync;
 import com.zkc.Service.CaptureService;
 import com.zkc.barcodescan.R;
@@ -31,11 +33,13 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewConfiguration;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends Activity {
@@ -45,6 +49,10 @@ public class MainActivity extends Activity {
 	public static EditText et_code;
 	private Button emptyBtn;
 	
+	private Calendar calendar;
+	private TextView fecha;
+	private int year, month, day;
+	
 	//ImageView img = (ImageView)findViewById(R.id.imageView);
 	
 
@@ -52,6 +60,9 @@ public class MainActivity extends Activity {
 	
 	// DB Class to perform DB related operations
     DBController controller = new DBController(this);
+    
+    // Date Class
+    ActivityEstadisticas setDate = new ActivityEstadisticas();
   
 
 	/*
@@ -114,7 +125,14 @@ public class MainActivity extends Activity {
 		
 		// Bar Bacl layout
 		getActionBar().setDisplayHomeAsUpEnabled(true);
-			
+		
+		
+		// Set Date
+		//fecha = (TextView)findViewById(R.id.textView4);
+    	calendar = Calendar.getInstance();
+		year = calendar.get(Calendar.YEAR);		
+		month = calendar.get(Calendar.MONTH);
+		day = calendar.get(Calendar.DAY_OF_MONTH);							
 	}
 
 	private void getOverflowMenu() {
@@ -204,8 +222,27 @@ public class MainActivity extends Activity {
 		MediaPlayer mp = MediaPlayer.create(this, R.raw.valid_beep);
     	mp.start();
 	}
+	
+	public String date(){
+		fecha.setText(new StringBuilder().append(day).append("/").append(month).append("/").append(year));
+    	String date = fecha.toString().trim();
+    	return date;		
+	}
+	
+	public void insertAsis(String rut){
+		String envRut = rut;
+		String envFecha = date();
+		HashMap<String, String> queryValues = new HashMap<String, String>();
+		queryValues.put("rut", envRut.toString().trim());
+		queryValues.put("fecha", envFecha.toString().trim());
+		controller.insertRutEstadisticas(queryValues);	
+	}
+	
+	public
 
+	@SuppressLint("DefaultLocale")
 	class ScanBroadcastReceiver extends BroadcastReceiver {
+		@SuppressLint("DefaultLocale")
 		@Override
 		public void onReceive(Context context, Intent intent) {
 			// TODO Auto-generated method stub
@@ -216,7 +253,6 @@ public class MainActivity extends Activity {
 			String igual;
 			String sinGuion;
 			String pasar;
-
 			
 			if(sSubcadena.equals(newCed)){
 				igual = text.substring(52,62);
@@ -224,11 +260,7 @@ public class MainActivity extends Activity {
 				pasar = sinGuion.toLowerCase();
 			}else{
 				sinGuion = text.substring(0,9);
-				pasar = sinGuion.replace(" ", "").toLowerCase();
-				//et_code.setText(sinGuion);				
-				//String pasar = et_code.getText();
-				//String pasando = pasar.toString();
-				//pasando.toString();								
+				pasar = sinGuion.replace(" ", "").toLowerCase();										
 		    }
 			// Get User records from SQLite DB
 	        ArrayList<HashMap<String, String>> userList = controller.getBlackUser(pasar);		      
@@ -237,26 +269,12 @@ public class MainActivity extends Activity {
 	        	Log.i(TAG, "MyBroadcastReceiver code: " + pasar);	     
 	        	et_code.setText("AL FIN CTM!!");
 	        	sonido();
-	        	//img.setImageResource(R.drawable.valid_image);
+	        	insertAsis(pasar);
+	        	//img.setImageResource(R.drawable.valid_image);	 
+	        		        	
 	        }else{
 	        	et_code.setText("puta la wea");
-	        }			
-		        
-			
-			//String sCadena = text;
-			//String sSubcadena = sCadena.substring(0,9);			
-			//String modif = sSubcadena.replace(" ", "");
-			//String modif = sSubcadena.trim();
-			//String rut = "75344465";
-			//String igual;
-			//if(modif.equals(rut)){
-			//	igual = "ok";
-			//}else{
-			//	igual = "NO";
-			//}			
-			//Log.i(TAG, "MyBroadcastReceiver code:" + modif);			
-			//et_code.setText(modif+igual);		
+	        }				
 		}
 	}
-} 
-
+}
