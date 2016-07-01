@@ -7,9 +7,12 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.text.Editable;
 import android.util.Log;
+import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 
 import com.zkc.barcodescan.R;
@@ -22,9 +25,8 @@ import com.zkc.barcodescan.R;
 public class DBController extends SQLiteOpenHelper {
 
     public DBController(Context applicationcontext){
-        super(applicationcontext, "user.db", null, 1);
-    }
-    
+        super(applicationcontext, "user.db", null, 1);        
+    }    
     
  // Create tables
     @Override
@@ -35,8 +37,7 @@ public class DBController extends SQLiteOpenHelper {
         database.execSQL(query);
         query2 = "CREATE TABLE estadisticas ( rut TEXT, fecha TEXT)";
         database.execSQL(query2);
-    }
-    
+    }    
     
 
     @Override
@@ -69,11 +70,12 @@ public class DBController extends SQLiteOpenHelper {
         database.close();
     }
 
-    public void insertRutEstadisticas(HashMap<String, String> queryValues) {
+    public void insertRutEstadisticas(String rut, String fecha) {
+    	//String date = setDate.setDateScaner();
         SQLiteDatabase database = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put("rut", queryValues.get("rut"));
-        values.put("fecha", queryValues.get("fecha"));
+        values.put("rut", rut.toString().trim());
+        values.put("fecha", fecha);
         database.insert("estadisticas", null, values);
         database.close();
     }
@@ -105,9 +107,7 @@ public class DBController extends SQLiteOpenHelper {
      * Get Rut of Users from SQLite DB as Array List
      * @return
      */
-    public ArrayList<HashMap<String, String>> getBlackUser(String receptor) 
-    {    	
-    	
+    public ArrayList<HashMap<String, String>> getBlackUser(String receptor){    	
     	String rut = receptor;
     	rut.toString().replace(" ", "");
     	//String rut = "17107682k";    	
@@ -126,8 +126,25 @@ public class DBController extends SQLiteOpenHelper {
         }
         database.close();
         return usersList;        
-        }  
+        }
     
+    public ArrayList<HashMap<String, String>> getAllAsistentes(String fecha) {    	
+        ArrayList<HashMap<String, String>> usersList;        
+        usersList = new ArrayList<HashMap<String, String>>();        
+        String selectQuery = "SELECT * FROM estadisticas WHERE fecha = '"+fecha+"'";        
+        SQLiteDatabase database = this.getWritableDatabase();        
+        Cursor cursor = database.rawQuery(selectQuery, null);        
+        if (cursor.moveToFirst()) {
+            do {
+                HashMap<String, String> map = new HashMap<String, String>();
+                map.put("rut", cursor.getString(0));
+                map.put("fecha", cursor.getString(1));
+                usersList.add(map);
+            } while (cursor.moveToNext());
+        }
+        database.close();
+        return usersList;
+    }          
 }
 
 

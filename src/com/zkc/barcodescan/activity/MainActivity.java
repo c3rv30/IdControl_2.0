@@ -11,7 +11,6 @@ import android.media.MediaPlayer;
 
 
 import com.blacklist.sync.DBController;
-import com.blacklist.sync.ActivityEstadisticas;
 import com.blacklist.sync.MainActivitySync;
 import com.zkc.Service.CaptureService;
 import com.zkc.barcodescan.R;
@@ -33,7 +32,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewConfiguration;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListAdapter;
@@ -49,9 +47,9 @@ public class MainActivity extends Activity {
 	public static EditText et_code;
 	private Button emptyBtn;
 	
-	private Calendar calendar;
+	/*private Calendar calendar;
 	private TextView fecha;
-	private int year, month, day;
+	private int year, month, day;*/
 	
 	//ImageView img = (ImageView)findViewById(R.id.imageView);
 	
@@ -61,8 +59,11 @@ public class MainActivity extends Activity {
 	// DB Class to perform DB related operations
     DBController controller = new DBController(this);
     
+    private Calendar calendar;
+	private int year, month, day;
+    
     // Date Class
-    ActivityEstadisticas setDate = new ActivityEstadisticas();
+    //ActivityEstadisticas setDate = new ActivityEstadisticas();
   
 
 	/*
@@ -222,26 +223,10 @@ public class MainActivity extends Activity {
 		MediaPlayer mp = MediaPlayer.create(this, R.raw.valid_beep);
     	mp.start();
 	}
-	
-	public String date(){
-		fecha.setText(new StringBuilder().append(day).append("/").append(month).append("/").append(year));
-    	String date = fecha.toString().trim();
-    	return date;		
-	}
-	
-	public void insertAsis(String rut){
-		String envRut = rut;
-		String envFecha = date();
-		HashMap<String, String> queryValues = new HashMap<String, String>();
-		queryValues.put("rut", envRut.toString().trim());
-		queryValues.put("fecha", envFecha.toString().trim());
-		controller.insertRutEstadisticas(queryValues);	
-	}
-	
-	public
+		
 
 	@SuppressLint("DefaultLocale")
-	class ScanBroadcastReceiver extends BroadcastReceiver {
+	public class ScanBroadcastReceiver extends BroadcastReceiver {
 		@SuppressLint("DefaultLocale")
 		@Override
 		public void onReceive(Context context, Intent intent) {
@@ -267,13 +252,29 @@ public class MainActivity extends Activity {
 	        // If users exists in SQLite DB
 	        if (userList.size() != 0){
 	        	Log.i(TAG, "MyBroadcastReceiver code: " + pasar);	     
-	        	et_code.setText("AL FIN CTM!!");
-	        	sonido();
-	        	insertAsis(pasar);
-	        	//img.setImageResource(R.drawable.valid_image);	 
-	        		        	
+	        	et_code.setText("NO PUEDE INGRESAR AL ESTADIO");	        	
+	        	//img.setImageResource(R.drawable.valid_image);	 	        		        	
 	        }else{
-	        	et_code.setText("puta la wea");
+	        	calendar = Calendar.getInstance();
+	    		year = calendar.get(Calendar.YEAR);		
+	    		month = calendar.get(Calendar.MONTH);
+	    		day = calendar.get(Calendar.DAY_OF_MONTH);
+	    		
+	    		String year2;
+	    		year2 = Integer.toString(year);
+	    		String month2;
+	    		month2 = Integer.toString(month+1);
+	    		String day2;
+	    		day2 = Integer.toString(day);
+	    		
+	    		String fecha;
+	    		fecha = day2+"/"+month2+"/"+year2;
+	    		fecha.trim().toString();
+	    		
+	    		
+	        	et_code.setText("PUEDE INGRESAR: " + pasar);
+	        	sonido();
+	        	controller.insertRutEstadisticas(pasar, fecha);
 	        }				
 		}
 	}

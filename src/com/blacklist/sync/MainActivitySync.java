@@ -56,7 +56,8 @@ public class MainActivitySync extends Activity {
         
         // Initialize Progress Dialog properties
         prgDialog = new ProgressDialog(this);
-        prgDialog.setMessage("Transferring Data from Remote MySQL DB and Syncing SQLite. Please wait...");
+        //prgDialog.setMessage("Transferring Data from Remote MySQL DB and Syncing SQLite. Please wait...");
+        prgDialog.setMessage("Transfiriendo Datos del servidor remoto, espere...");
         prgDialog.setCancelable(false);
         // BroadCase Receiver Intent Object
         Intent alarmIntent = new Intent(getApplicationContext(), SampleBC.class);
@@ -121,7 +122,7 @@ public class MainActivitySync extends Activity {
                 prgDialog.hide();
                 // Update SQLite DB with response sent by getusers.php
                 updateSQLite(response);
-                Toast.makeText(getApplicationContext(), "Base de Datos Actualizada", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Lista Negra Actualizada", Toast.LENGTH_LONG).show();
             }
             // When error occured
             @Override
@@ -193,12 +194,14 @@ public class MainActivitySync extends Activity {
         client.post("http://idcontrol.cc/sqlitemysqlsync/updatesyncsts.php", params, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(String response) {
-                Toast.makeText(getApplicationContext(), "MySQL DB has been informed about Sync activity", Toast.LENGTH_LONG).show();
+                //Toast.makeText(getApplicationContext(), "MySQL DB has been informed about Sync activity", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "El Servidor a sido informado de la sincronizacion", Toast.LENGTH_LONG).show();
             }
 
             @Override
             public void onFailure(int statusCode, Throwable error, String content) {
-                Toast.makeText(getApplicationContext(), "Error Occured", Toast.LENGTH_LONG).show();
+            	//Toast.makeText(getApplicationContext(), "Error Occured", Toast.LENGTH_LONG).show();
+            	Toast.makeText(getApplicationContext(), "Ocurrio un Error", Toast.LENGTH_LONG).show();
             }
         });
     }
