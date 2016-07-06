@@ -12,6 +12,7 @@ import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.TextView;
@@ -39,6 +40,22 @@ public class ActivityEstadisticas extends Activity {
 		day = calendar.get(Calendar.DAY_OF_MONTH);
 		showDate(year, month+1, day);	
 	}
+	
+	@Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here.
+        int id = item.getItemId();
+        // When Sync action button is clicked
+        /*if (id == R.id.refresh) {
+            // Transfer data from remote MySQL DB to SQLite on Android and perform Sync
+            controller.deleteFromTable();
+            syncSQLiteMySQLDB();
+            return true;
+        }*/
+        //return super.onOptionsItemSelected(item);
+        finish();
+        return true;
+    }
 	
 	@SuppressWarnings("deprecation")
 	public void setDate(View view){

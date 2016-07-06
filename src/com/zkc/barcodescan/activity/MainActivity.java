@@ -45,7 +45,7 @@ public class MainActivity extends Activity {
 	private ScanBroadcastReceiver scanBroadcastReceiver;
 	Button btnOpen, btnEdit;
 	public static EditText et_code;
-	private Button emptyBtn;
+	//private Button emptyBtn;
 	
 	/*private Calendar calendar;
 	private TextView fecha;
@@ -93,15 +93,15 @@ public class MainActivity extends Activity {
 			}
 		});
 		// �����Ϣ
-		emptyBtn = (Button) findViewById(R.id.emptyBtn);
-		emptyBtn.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				et_code.setText("");
-			}
-		});
+		//emptyBtn = (Button) findViewById(R.id.emptyBtn);
+//		emptyBtn.setOnClickListener(new OnClickListener() {
+//
+//			@Override
+//			public void onClick(View v) {
+//				// TODO Auto-generated method stub
+//				et_code.setText("");
+//			}
+//		});
 		// ����ɨ��
 		btnOpen = (Button) findViewById(R.id.btnOpen);
 		btnOpen.setOnClickListener(new OnClickListener() {
@@ -214,14 +214,64 @@ public class MainActivity extends Activity {
 						}).setNegativeButton(R.string.popup_no, null).show();
 	}
 	
-	public void prueba1() {
-        Toast toast = Toast.makeText(this, "Es Igual", Toast.LENGTH_SHORT);
+	public void msgPass() {
+        Toast toast = Toast.makeText(this, "PUEDE INGRESAR", Toast.LENGTH_SHORT);
         toast.show();        
     }
 	
-	public void sonido(){
+	public void msgNoPass() {
+        Toast toast = Toast.makeText(this, "NO PUEDE INGRESAR", Toast.LENGTH_SHORT);
+        toast.show();        
+    }
+	
+	public void beepPass(){
 		MediaPlayer mp = MediaPlayer.create(this, R.raw.valid_beep);
     	mp.start();
+	}
+	
+	public void beepNoPass(){
+		MediaPlayer mp = MediaPlayer.create(this, R.raw.beep_no_pass);
+    	mp.start();
+	}
+	
+	public void manualButton(View v){
+		String pasar;
+		pasar = et_code.getText().toString().trim();
+		getRut(pasar);
+	}
+	
+	public void getRut(String pasar){	
+		
+		// Get User records from SQLite DB
+        ArrayList<HashMap<String, String>> userList = controller.getBlackUser(pasar);		      
+        // If users exists in SQLite DB
+        if (userList.size() != 0){
+        	beepNoPass();
+        	msgNoPass();
+        	//Log.i(TAG, "MyBroadcastReceiver code: " + pasar);	     
+        	//et_code.setText("NO PUEDE INGRESAR AL ESTADIO");	        	
+        	//img.setImageResource(R.drawable.valid_image);	 	        		        	
+        }else{
+        	calendar = Calendar.getInstance();
+    		year = calendar.get(Calendar.YEAR);		
+    		month = calendar.get(Calendar.MONTH);
+    		day = calendar.get(Calendar.DAY_OF_MONTH);
+    		
+    		String year2;
+    		year2 = Integer.toString(year);
+    		String month2;
+    		month2 = Integer.toString(month+1);
+    		String day2;
+    		day2 = Integer.toString(day);
+    		
+    		String fecha;
+    		fecha = day2+"/"+month2+"/"+year2;
+    		fecha.trim().toString();	    		
+        	et_code.setText("PUEDE INGRESAR: " + pasar);
+        	beepPass();
+        	msgPass();
+        	controller.insertRutEstadisticas(pasar, fecha);
+        }
 	}
 		
 
@@ -246,36 +296,8 @@ public class MainActivity extends Activity {
 			}else{
 				sinGuion = text.substring(0,9);
 				pasar = sinGuion.replace(" ", "").toLowerCase();										
-		    }
-			// Get User records from SQLite DB
-	        ArrayList<HashMap<String, String>> userList = controller.getBlackUser(pasar);		      
-	        // If users exists in SQLite DB
-	        if (userList.size() != 0){
-	        	Log.i(TAG, "MyBroadcastReceiver code: " + pasar);	     
-	        	et_code.setText("NO PUEDE INGRESAR AL ESTADIO");	        	
-	        	//img.setImageResource(R.drawable.valid_image);	 	        		        	
-	        }else{
-	        	calendar = Calendar.getInstance();
-	    		year = calendar.get(Calendar.YEAR);		
-	    		month = calendar.get(Calendar.MONTH);
-	    		day = calendar.get(Calendar.DAY_OF_MONTH);
-	    		
-	    		String year2;
-	    		year2 = Integer.toString(year);
-	    		String month2;
-	    		month2 = Integer.toString(month+1);
-	    		String day2;
-	    		day2 = Integer.toString(day);
-	    		
-	    		String fecha;
-	    		fecha = day2+"/"+month2+"/"+year2;
-	    		fecha.trim().toString();
-	    		
-	    		
-	        	et_code.setText("PUEDE INGRESAR: " + pasar);
-	        	sonido();
-	        	controller.insertRutEstadisticas(pasar, fecha);
-	        }				
+		    }			
+			getRut(pasar);							
 		}
 	}
 }

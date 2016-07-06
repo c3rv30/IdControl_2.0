@@ -6,16 +6,16 @@
     tools:context="com.blacklist.sync.MainActivitySync">
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Sincronizar"
+        android:text="@string/btnsync"
         android:id="@+id/btnsync"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
+        android:layout_centerInParent="true"
         android:onClick="syncDB" />
 
-    <RelativeLayout
+    <!-- 
+    	
+    	<RelativeLayout
         android:id="@+id/relativeLayout1"
         android:layout_width="fill_parent"
         android:layout_height="match_parent"
@@ -24,7 +24,7 @@
         android:layout_marginTop="70dp"
 
         >
-        <!--android:layout_below="@+id/relativeLayout1"-->
+        android:layout_below="@+id/relativeLayout1"
 
         <ListView
             android:id="@android:id/list"
@@ -34,5 +34,7 @@
             android:layout_alignParentLeft="true">
         </ListView>
     </RelativeLayout>
+    	
+     -->
 </RelativeLayout>
 

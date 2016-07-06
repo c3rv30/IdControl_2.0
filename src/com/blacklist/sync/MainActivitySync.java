@@ -91,7 +91,8 @@ public class MainActivitySync extends Activity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here.
-        int id = item.getItemId();
+
+
         // When Sync action button is clicked
         /*if (id == R.id.refresh) {
             // Transfer data from remote MySQL DB to SQLite on Android and perform Sync

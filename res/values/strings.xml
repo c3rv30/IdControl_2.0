@@ -14,8 +14,11 @@
     <string name="action_2d">Qr modules set</string>
     <string name="exit">SALIR</string>
     <string name="open_scan">ESCANEAR</string>
-    <string name="empty">VACIAR</string>
+    <string name="empty">VALIDAR</string>
+    <string name="btnsync">SINCRONIZAR</string>
+    
     <string name="popup_title">Selecione</string>
+    
     <!--<string name="popup_message">Device quit, you have to exit the application do?</string>  -->
     <string name="popup_message">Desea volver al menu principal?</string>
     <string name="popup_yes">OK</string>
