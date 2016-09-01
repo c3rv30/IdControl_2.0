@@ -157,10 +157,9 @@ public class DBController extends SQLiteOpenHelper {
         if (cursor.moveToFirst()) {
             do {
                 HashMap<String, String> map = new HashMap<String, String>();
-                map.put("userId", cursor.getString(0));
-                map.put("userRut", cursor.getString(1));
-                map.put("numList", cursor.getString(2));
-                
+               // map.put("userId", cursor.getString(0));
+                //map.put("userRut", cursor.getString(1));
+                map.put("numList", cursor.getString(2));                
                 usersList.add(map);
             } while (cursor.moveToNext());
         }
@@ -256,7 +255,7 @@ public class DBController extends SQLiteOpenHelper {
     }  
     // Consulta para poblar Spinner
     public ArrayList<String> getAllEquipo2(){    	
-    	ArrayList<String> my_array = new ArrayList();
+    	ArrayList<String> my_array = new ArrayList<String>();
     	try{
     		String selectQuery = "SELECT * FROM equipo";
     		SQLiteDatabase database = this.getWritableDatabase();        

@@ -20,6 +20,13 @@
         android:adjustViewBounds="true"
         android:scaleType="fitStart"
         />
+    <TextView
+        android:id="@+id/nomList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textSize="14sp"
+        />
     
     <Button
         android:layout_width="match_parent"

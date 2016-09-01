@@ -4,8 +4,10 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import android.media.MediaPlayer;
 
@@ -46,6 +48,7 @@ public class MainActivity extends Activity {
 	private ScanBroadcastReceiver scanBroadcastReceiver;
 	Button btnOpen, btnEdit;
 	public static EditText et_code;
+	public TextView nomList;
 	//private Button emptyBtn;
 	
 	/*private Calendar calendar;
@@ -76,7 +79,8 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_barcode_main_two);		
 		checkvalid = (ImageView)findViewById(R.id.checkImage);
-		et_code = (EditText) findViewById(R.id.et_code);		
+		et_code = (EditText) findViewById(R.id.et_code);	
+		nomList = (TextView)findViewById(R.id.nomList);
 		
 		// �˳�
 		btnEdit = (Button) findViewById(R.id.btnEdit);
@@ -256,12 +260,26 @@ public class MainActivity extends Activity {
         ArrayList<HashMap<String, String>> userList = controller.getBlackUser(pasar);		      
         // If users exists in SQLite DB
         if (userList.size() != 0){
+        	for (int a = 0; a<userList.size();a++){
+        		
+        		HashMap<String, String> tmpData = (HashMap<String, String>) userList.get(a);
+        		Set<String> key = tmpData.keySet();
+        		Iterator it = key.iterator();
+        		while (it.hasNext()){
+        			String hmKey = (String)it.next();
+        			String hmData = (String)tmpData.get(hmKey);
+        			
+        			System.out.println("Key: "+hmKey +" & Data: "+hmData);
+        			nomList.setText("Numero de Lista: "+hmData);
+        		}
+        	}
         	beepNoPass();
         	msgNoPass();
         	checkvalid.setImageResource(R.drawable.invalid_check);     
         	et_code.setText(pasar);
         	//Log.i(TAG, "MyBroadcastReceiver code: " + pasar);	
         }else{
+        	nomList.setText("");
         	calendar = Calendar.getInstance();
     		year = calendar.get(Calendar.YEAR);		
     		month = calendar.get(Calendar.MONTH);
