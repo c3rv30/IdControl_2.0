@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Equipo Asignado"
+        android:id="@+id/titulo"
+        android:textSize="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center_horizontal" />
+    
+    
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:id="@+id/textViewEquipo"
+        android:textSize="15sp"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center_horizontal" />
+    
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ID Dispositivo"
+        android:id="@+id/titulo2"
+        android:textSize="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center_horizontal" />
+    
+     <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:id="@+id/textViewIdDisp"
+        android:textSize="15sp"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center_horizontal" />
+     
+     
+     <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Desvincular Equipo del Dispositivo"
+        android:id="@+id/buttonDesvincularEquipo"
+       	android:layout_marginTop="30dp"
+        android:layout_gravity="center_horizontal"
+        android:onClick="btnDesEquipo"/>
+  
+</LinearLayout>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Generated with http://android-holo-colors.com -->
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+  <style name="estadio" parent="@style/componentstyles"/>
+
+  <style name="componentstyles" parent="android:Theme.Holo.Light">
+
+    <item name="android:editTextStyle">@style/EditTextestadio</item>
+
+    <item name="android:textColorHighlight">#99e7930b</item>
+
+    <item name="android:autoCompleteTextViewStyle">@style/AutoCompleteTextViewestadio</item>
+
+    <item name="android:checkboxStyle">@style/CheckBoxestadio</item>
+
+    <item name="android:radioButtonStyle">@style/RadioButtonestadio</item>
+
+    <item name="android:buttonStyle">@style/Buttonestadio</item>
+
+    <item name="android:imageButtonStyle">@style/ImageButtonestadio</item>
+
+    <item name="android:spinnerStyle">@style/Spinnerestadio</item>
+
+    <item name="android:spinnerDropDownItemStyle">@style/SpinnerDropDownItemestadio</item>
+
+    <item name="android:progressBarStyleHorizontal">@style/ProgressBarestadio</item>
+
+    <item name="android:seekBarStyle">@style/SeekBarestadio</item>
+
+    <item name="android:ratingBarStyle">@style/RatingBarestadio</item>
+
+    <item name="android:ratingBarStyleIndicator">@style/RatingBarBigestadio</item>
+
+    <item name="android:ratingBarStyleSmall">@style/RatingBarSmallestadio</item>
+
+    <item name="android:buttonStyleToggle">@style/Toggleestadio</item>
+
+    <item name="android:listViewStyle">@style/ListViewestadio</item>
+
+    <item name="android:listViewWhiteStyle">@style/ListViewestadio.White</item>
+
+    <item name="android:spinnerItemStyle">@style/SpinnerItemestadio</item>
+
+  </style>
+
+</resources>

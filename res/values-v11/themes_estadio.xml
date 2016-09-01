@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Generated with http://android-holo-colors.com -->
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+  <style name="estadio" parent="@style/componentstyles"/>
+
+  <style name="componentstyles" parent="android:Theme.Holo.Light">
+
+    <item name="android:editTextBackground">@drawable/estadio_edit_text_holo_light</item>
+
+    <item name="android:textColorHighlight">#99e7930b</item>
+    <item name="android:textSelectHandleLeft">@drawable/estadio_text_select_handle_left</item>
+    <item name="android:textSelectHandleRight">@drawable/estadio_text_select_handle_right</item>
+    <item name="android:textSelectHandle">@drawable/estadio_text_select_handle_middle</item>
+
+    <item name="android:autoCompleteTextViewStyle">@style/AutoCompleteTextViewestadio</item>
+
+    <item name="android:listChoiceIndicatorMultiple">@drawable/estadio_btn_check_holo_light</item>
+
+    <item name="android:listChoiceIndicatorSingle">@drawable/estadio_btn_radio_holo_light</item>
+
+    <item name="android:buttonStyle">@style/Buttonestadio</item>
+
+    <item name="android:imageButtonStyle">@style/ImageButtonestadio</item>
+
+    <item name="android:dropDownSpinnerStyle">@style/Spinnerestadio</item>
+
+    <item name="android:progressBarStyleHorizontal">@style/ProgressBarestadio</item>
+
+    <item name="android:seekBarStyle">@style/SeekBarestadio</item>
+
+    <item name="android:ratingBarStyle">@style/RatingBarestadio</item>
+
+    <item name="android:ratingBarStyleIndicator">@style/RatingBarBigestadio</item>
+
+    <item name="android:ratingBarStyleSmall">@style/RatingBarSmallestadio</item>
+
+    <item name="android:buttonStyleToggle">@style/Toggleestadio</item>
+
+    <item name="android:listChoiceBackgroundIndicator">@drawable/estadio_list_selector_holo_light</item>
+
+    <item name="android:activatedBackgroundIndicator">@drawable/estadio_activated_background_holo_light</item>
+
+    <item name="android:fastScrollThumbDrawable">@drawable/estadio_fastscroll_thumb_holo</item>
+
+  </style>
+
+</resources>

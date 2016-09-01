@@ -178,5 +178,4 @@ public class CaptureService extends Service {
 		unregisterReceiver(screenStatusReceiver);
 		super.onDestroy();
 	}
-
 }

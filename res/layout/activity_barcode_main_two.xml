@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" 
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center">    
+    
+    <EditText
+    	android:id="@+id/et_code"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusable="true" />  
+    
+    <ImageView
+        android:id="@+id/checkImage"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1.0"
+        android:layout_marginTop="30dp"
+        android:adjustViewBounds="true"
+        android:scaleType="fitStart"
+        />
+    
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center_horizontal"
+ 		android:id="@+id/emptyBtn"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:text="@string/empty" 
+        android:onClick="manualButton"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center_horizontal"
+		android:id="@+id/btnOpen"
+		android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:text="@string/open_scan"
+        />
+    
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnEdit"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center_horizontal"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:text="@string/exit"
+        />    
+</LinearLayout>

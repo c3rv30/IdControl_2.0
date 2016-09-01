@@ -12,6 +12,7 @@ import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.DatePicker;
@@ -39,12 +40,23 @@ public class ActivityEstadisticas extends Activity {
 		month = calendar.get(Calendar.MONTH);
 		day = calendar.get(Calendar.DAY_OF_MONTH);
 		showDate(year, month+1, day);	
+		
+		getActionBar().setDisplayHomeAsUpEnabled(true);
 	}
 	
-	@Override
+	// Options Menu (ActionBar Menu)
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        //getMenuInflater().inflate(R.menu.main, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    // When Options Menu is selected
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here.
-        int id = item.getItemId();
+
         // When Sync action button is clicked
         /*if (id == R.id.refresh) {
             // Transfer data from remote MySQL DB to SQLite on Android and perform Sync
@@ -60,7 +72,7 @@ public class ActivityEstadisticas extends Activity {
 	@SuppressWarnings("deprecation")
 	public void setDate(View view){
 		showDialog(999);
-		Toast.makeText(getApplicationContext(), "ca", Toast.LENGTH_SHORT).show();
+		//Toast.makeText(getApplicationContext(), "ca", Toast.LENGTH_SHORT).show();
 	}
 	
 	protected Dialog onCreateDialog(int id){

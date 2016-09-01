@@ -12,9 +12,9 @@
     <string name="action_encoding_tip">Please select a code type</string>
     <string name="action_setsuccess">Settings success</string>
     <string name="action_2d">Qr modules set</string>
-    <string name="exit">SALIR</string>
+    <string name="exit">VOLVER AL MENU PRINCIPAL</string>
     <string name="open_scan">ESCANEAR</string>
-    <string name="empty">VALIDAR</string>
+    <string name="empty">VERIFICAR RUT</string>
     <string name="btnsync">SINCRONIZAR</string>
     
     <string name="popup_title">Selecione</string>
@@ -29,4 +29,6 @@
 	<string name="setDate">Seleccione Fecha</string>
 	<string name="setCount">Buscar Asistentes</string>	
 	<string name="date_selected"></string>
+	<string name="asign_team" >Administrar Dispositivo</string>
+	<string name="edit_team_id">Editar Equipo</string>
 </resources>

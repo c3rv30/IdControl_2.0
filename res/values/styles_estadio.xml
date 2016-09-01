@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Generated with http://android-holo-colors.com -->
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+  <style name="EditTextestadio" parent="android:Widget.EditText">
+	  <item name="android:background">@drawable/estadio_edit_text_holo_light</item>
+	  <item name="android:textColor">#000000</item>
+  </style>
+
+  <style name="AutoCompleteTextViewestadio" parent="android:Widget.AutoCompleteTextView">
+      <item name="android:dropDownSelector">@drawable/estadio_list_selector_holo_light</item>
+	  <item name="android:background">@drawable/estadio_edit_text_holo_light</item>
+	  <item name="android:textColor">#000000</item>
+  </style>
+
+  <style name="CheckBoxestadio" parent="android:Widget.CompoundButton.CheckBox">
+      <item name="android:button">@drawable/estadio_btn_check_holo_light</item>
+  </style>
+
+  <style name="RadioButtonestadio" parent="android:Widget.CompoundButton.RadioButton">
+      <item name="android:button">@drawable/estadio_btn_radio_holo_light</item>
+  </style>
+
+  <style name="Buttonestadio" parent="android:Widget.Button">
+	  <item name="android:background">@drawable/estadio_btn_default_holo_light</item>
+	  <item name="android:minHeight">48dip</item>
+	  <item name="android:minWidth">64dip</item>
+	  <item name="android:textColor">#000000</item>
+  </style>
+
+  <style name="ImageButtonestadio" parent="android:Widget.ImageButton">
+	  <item name="android:background">@drawable/estadio_btn_default_holo_light</item>
+  </style>
+
+  <style name="Spinnerestadio" parent="android:Widget.Spinner">
+      <item name="android:background">@drawable/estadio_spinner_background_holo_light</item>
+      <item name="android:dropDownSelector">@drawable/estadio_list_selector_holo_light</item>
+  </style>
+
+  <style name="SpinnerDropDownItemestadio" parent="android:Widget.DropDownItem.Spinner">
+      <item name="android:checkMark">@drawable/estadio_btn_radio_holo_light</item>
+  </style>
+  <style name="Tabestadio">
+      <item name="android:gravity">center_horizontal</item>
+      <item name="android:paddingLeft">16dip</item>
+      <item name="android:paddingRight">16dip</item>
+      <item name="android:background">@drawable/estadio_tab_indicator_holo</item>
+      <item name="android:layout_width">0dip</item>
+      <item name="android:layout_weight">1</item>
+      <item name="android:minWidth">80dip</item>
+  </style>
+
+  <style name="TabTextestadio">
+	  <item name="android:textColor">#000000</item>
+      <item name="android:textSize">12sp</item>
+      <item name="android:textStyle">bold</item>
+      <!-- v14 <item name="android:textAllCaps">true</item> -->
+      <item name="android:ellipsize">marquee</item>
+      <item name="android:maxLines">2</item>
+      <item name="android:maxWidth">180dip</item>
+  </style>
+
+  <style name="ProgressBarestadio" parent="android:Widget.ProgressBar.Horizontal">
+      <item name="android:progressDrawable">@drawable/estadio_progress_horizontal_holo_light</item>
+      <item name="android:indeterminateDrawable">@drawable/estadio_progress_indeterminate_horizontal_holo_light</item>
+      <item name="android:minHeight">16dip</item>
+      <item name="android:maxHeight">16dip</item>
+  </style>
+
+  <style name="SeekBarestadio" parent="android:Widget.SeekBar">
+      <item name="android:progressDrawable">@drawable/estadio_scrubber_progress_horizontal_holo_light</item>
+      <item name="android:indeterminateDrawable">@drawable/estadio_scrubber_progress_horizontal_holo_light</item>
+      <item name="android:minHeight">13dip</item>
+      <item name="android:maxHeight">13dip</item>
+      <item name="android:thumb">@drawable/estadio_scrubber_control_selector_holo_light</item>
+      <item name="android:thumbOffset">16dip</item>
+      <item name="android:paddingLeft">16dip</item>
+      <item name="android:paddingRight">16dip</item>
+  </style>
+
+  <style name="RatingBarestadio" parent="android:Widget.RatingBar">
+      <item name="android:progressDrawable">@drawable/estadio_ratingbar_full_holo_light</item>
+      <item name="android:indeterminateDrawable">@drawable/estadio_ratingbar_full_holo_light</item>
+  </style>
+
+  <style name="RatingBarBigestadio" parent="android:Widget.RatingBar">
+      <item name="android:progressDrawable">@drawable/estadio_ratingbar_holo_light</item>
+      <item name="android:indeterminateDrawable">@drawable/estadio_ratingbar_holo_light</item>
+      <item name="android:minHeight">35dip</item>
+      <item name="android:maxHeight">35dip</item>
+  </style>
+
+  <style name="RatingBarSmallestadio" parent="android:Widget.RatingBar">
+      <item name="android:progressDrawable">@drawable/estadio_ratingbar_small_holo_light</item>
+      <item name="android:indeterminateDrawable">@drawable/estadio_ratingbar_small_holo_light</item>
+      <item name="android:minHeight">16dip</item>
+      <item name="android:maxHeight">16dip</item>
+  </style>
+
+  <style name="Toggleestadio" parent="android:Widget.Button.Toggle">
+      <item name="android:background">@drawable/estadio_btn_toggle_holo_light</item>
+      <item name="android:minHeight">48dip</item>
+	  <item name="android:textColor">#000000</item>
+  </style>
+
+  <style name="ListViewestadio" parent="android:Widget.ListView">
+      <item name="android:listSelector">@drawable/estadio_list_selector_holo_light</item>
+  </style>
+
+  <style name="ListViewestadio.White" parent="android:Widget.ListView.White">
+      <item name="android:listSelector">@drawable/estadio_list_selector_holo_light</item>
+  </style>
+
+  <style name="SpinnerItemestadio" parent="android:TextAppearance.Widget.TextView.SpinnerItem">
+      <item name="android:textColor">#000000</item>
+  </style>
+
+</resources>

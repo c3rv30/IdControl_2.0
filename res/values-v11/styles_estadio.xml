@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Generated with http://android-holo-colors.com -->
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+  <style name="AutoCompleteTextViewestadio" parent="android:Widget.Holo.Light.AutoCompleteTextView">
+      <item name="android:dropDownSelector">@drawable/estadio_list_selector_holo_light</item>
+	    <item name="android:background">@drawable/estadio_edit_text_holo_light</item>
+  </style>
+
+  <style name="Buttonestadio" parent="android:Widget.Holo.Light.Button">
+	  <item name="android:background">@drawable/estadio_btn_default_holo_light</item>
+  </style>
+
+  <style name="ImageButtonestadio" parent="android:Widget.Holo.Light.ImageButton">
+	  <item name="android:background">@drawable/estadio_btn_default_holo_light</item>
+  </style>
+
+  <style name="Spinnerestadio" parent="android:Widget.Holo.Light.Spinner">
+      <item name="android:background">@drawable/estadio_spinner_background_holo_light</item>
+      <item name="android:dropDownSelector">@drawable/estadio_list_selector_holo_light</item>
+  </style>
+
+  <style name="ProgressBarestadio" parent="android:Widget.Holo.Light.ProgressBar.Horizontal">
+      <item name="android:progressDrawable">@drawable/estadio_progress_horizontal_holo_light</item>
+      <item name="android:indeterminateDrawable">@drawable/estadio_progress_indeterminate_horizontal_holo_light</item>
+  </style>
+
+  <style name="SeekBarestadio" parent="android:Widget.Holo.Light.SeekBar">
+      <item name="android:progressDrawable">@drawable/estadio_scrubber_progress_horizontal_holo_light</item>
+      <item name="android:indeterminateDrawable">@drawable/estadio_scrubber_progress_horizontal_holo_light</item>
+      <item name="android:thumb">@drawable/estadio_scrubber_control_selector_holo_light</item>
+  </style>
+
+  <style name="RatingBarestadio" parent="android:Widget.Holo.Light.RatingBar">
+      <item name="android:progressDrawable">@drawable/estadio_ratingbar_full_holo_light</item>
+      <item name="android:indeterminateDrawable">@drawable/estadio_ratingbar_full_holo_light</item>
+  </style>
+
+  <style name="RatingBarBigestadio" parent="android:Widget.Holo.Light.RatingBar.Indicator">
+      <item name="android:progressDrawable">@drawable/estadio_ratingbar_holo_light</item>
+      <item name="android:indeterminateDrawable">@drawable/estadio_ratingbar_holo_light</item>
+  </style>
+
+  <style name="RatingBarSmallestadio" parent="android:Widget.Holo.Light.RatingBar.Small">
+      <item name="android:progressDrawable">@drawable/estadio_ratingbar_small_holo_light</item>
+      <item name="android:indeterminateDrawable">@drawable/estadio_ratingbar_small_holo_light</item>
+  </style>
+
+  <style name="Toggleestadio" parent="android:Widget.Holo.Light.Button.Toggle">
+      <item name="android:background">@drawable/estadio_btn_toggle_holo_light</item>
+  </style>
+
+</resources>

@@ -23,6 +23,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.serialport.api.SerialPort;
 import android.text.Editable;
@@ -51,9 +52,7 @@ public class MainActivity extends Activity {
 	private TextView fecha;
 	private int year, month, day;*/
 	
-	//ImageView img = (ImageView)findViewById(R.id.imageView);
-	
-
+	ImageView checkvalid;	
 	List<Map<String, String>> listData = new ArrayList<Map<String, String>>();
 	
 	// DB Class to perform DB related operations
@@ -63,8 +62,7 @@ public class MainActivity extends Activity {
 	private int year, month, day;
     
     // Date Class
-    //ActivityEstadisticas setDate = new ActivityEstadisticas();
-  
+    //ActivityEstadisticas setDate = new ActivityEstadisticas();  
 
 	/*
 	 * private byte[] choosedData = new byte[] { 0x07, (byte) 0xC6, 0x04, 0x08,
@@ -76,12 +74,10 @@ public class MainActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
-		setContentView(R.layout.activity_barcode_main);
-
-		et_code = (EditText) findViewById(R.id.et_code);
+		setContentView(R.layout.activity_barcode_main_two);		
+		checkvalid = (ImageView)findViewById(R.id.checkImage);
+		et_code = (EditText) findViewById(R.id.et_code);		
 		
-		//et_code.setText("");
 		// �˳�
 		btnEdit = (Button) findViewById(R.id.btnEdit);
 		btnEdit.setOnClickListener(new OnClickListener() {
@@ -105,28 +101,26 @@ public class MainActivity extends Activity {
 		// ����ɨ��
 		btnOpen = (Button) findViewById(R.id.btnOpen);
 		btnOpen.setOnClickListener(new OnClickListener() {
+			
 			@Override
 			public void onClick(View arg0) {
 				SerialPort.CleanBuffer();
 				CaptureService.scanGpio.openScan();
+				clean(arg0);
 			}
-
 		});
 
 		Intent newIntent = new Intent(MainActivity.this, CaptureService.class);
 		newIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 		startService(newIntent);
-
 		getOverflowMenu();
-
 		scanBroadcastReceiver = new ScanBroadcastReceiver();
 		IntentFilter intentFilter = new IntentFilter();
 		intentFilter.addAction("com.zkc.scancode");
 		this.registerReceiver(scanBroadcastReceiver, intentFilter);
 		
 		// Bar Bacl layout
-		getActionBar().setDisplayHomeAsUpEnabled(true);
-		
+		getActionBar().setDisplayHomeAsUpEnabled(true);		
 		
 		// Set Date
 		//fecha = (TextView)findViewById(R.id.textView4);
@@ -153,17 +147,18 @@ public class MainActivity extends Activity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// TODO Auto-generated method stub
-		menu.add(0, 1, 1, R.string.action_1d);
-		menu.add(0, 2, 2, R.string.action_2d);
+		//menu.add(0, 1, 1, R.string.action_1d);
+		//menu.add(0, 2, 2, R.string.action_2d);
+		menu.add(0, 1, 1, R.string.asign_team);
+		//menu.add(0, 2, 2, R.string.edit_team_id);
 		return super.onCreateOptionsMenu(menu);
-
 	}
 
 	@Override
 	public boolean onOptionsItemSelected(android.view.MenuItem item) {
 		if (item.getItemId() == 1) {
 			Intent intent = new Intent();
-			intent.setClass(MainActivity.this, ActivityBarcodeSetting.class);
+			intent.setClass(MainActivity.this, com.blacklist.sync.LoginAdmin.class);
 			startActivity(intent);
 			return super.onOptionsItemSelected(item);
 		} else if (item.getItemId() == 2) {
@@ -173,8 +168,7 @@ public class MainActivity extends Activity {
 			return super.onOptionsItemSelected(item);
 		}
 		finish();
-		return true;
-		
+		return true;		
 	}
 
 	@Override
@@ -205,16 +199,19 @@ public class MainActivity extends Activity {
 							@Override
 							public void onClick(DialogInterface dialog,
 									int which) {
-
 								CaptureService.scanGpio.closeScan(); // �رյ�Դ
 								CaptureService.scanGpio.closePower();
-
 								finish();
 							}
 						}).setNegativeButton(R.string.popup_no, null).show();
 	}
 	
-	public void msgPass() {
+	public void clean(View v){
+		et_code.setText("");
+		checkvalid.setImageDrawable(null);
+	}
+	
+	public void msgPass(String pasar) {
         Toast toast = Toast.makeText(this, "PUEDE INGRESAR", Toast.LENGTH_SHORT);
         toast.show();        
     }
@@ -224,33 +221,46 @@ public class MainActivity extends Activity {
         toast.show();        
     }
 	
+	public void msgingreso() {
+        Toast toast = Toast.makeText(this, "RUT YA REGISTRADO PARA HOY", Toast.LENGTH_SHORT);
+        toast.show();        
+    }
+	
 	public void beepPass(){
 		MediaPlayer mp = MediaPlayer.create(this, R.raw.valid_beep);
     	mp.start();
 	}
 	
 	public void beepNoPass(){
-		MediaPlayer mp = MediaPlayer.create(this, R.raw.beep_no_pass);
+		//MediaPlayer mp = MediaPlayer.create(this, R.raw.beep_no_pass);
+		MediaPlayer mp = MediaPlayer.create(this, R.raw.denied_beep_v2);
     	mp.start();
 	}
 	
-	public void manualButton(View v){
+	public void manualButton(View v){		
 		String pasar;
 		pasar = et_code.getText().toString().trim();
-		getRut(pasar);
+		if(pasar.isEmpty()){
+			Toast toast = Toast.makeText(this, "DEBE INGRESAR UN RUT", Toast.LENGTH_SHORT);
+	        toast.show();
+		}else{
+			et_code.setText("");
+			validarAsis(pasar);
+			//getRut(pasar);
+			et_code.setText(pasar);
+		}		
 	}
 	
-	public void getRut(String pasar){	
-		
+	public void getRut(String pasar){		
 		// Get User records from SQLite DB
         ArrayList<HashMap<String, String>> userList = controller.getBlackUser(pasar);		      
         // If users exists in SQLite DB
         if (userList.size() != 0){
         	beepNoPass();
         	msgNoPass();
-        	//Log.i(TAG, "MyBroadcastReceiver code: " + pasar);	     
-        	//et_code.setText("NO PUEDE INGRESAR AL ESTADIO");	        	
-        	//img.setImageResource(R.drawable.valid_image);	 	        		        	
+        	checkvalid.setImageResource(R.drawable.invalid_check);     
+        	et_code.setText(pasar);
+        	//Log.i(TAG, "MyBroadcastReceiver code: " + pasar);	
         }else{
         	calendar = Calendar.getInstance();
     		year = calendar.get(Calendar.YEAR);		
@@ -267,11 +277,51 @@ public class MainActivity extends Activity {
     		String fecha;
     		fecha = day2+"/"+month2+"/"+year2;
     		fecha.trim().toString();	    		
-        	et_code.setText("PUEDE INGRESAR: " + pasar);
+        	et_code.setText(pasar);
         	beepPass();
-        	msgPass();
-        	controller.insertRutEstadisticas(pasar, fecha);
+        	msgPass(pasar);        	
+        	checkvalid.setImageResource(R.drawable.valid_check);
+        	
+        	String equipo = controller.getEquipoAsignado();
+            String ID = controller.getIdDispAsignado();
+            
+            equipo.toString().trim();
+            ID.toString().trim();
+        	
+        	//controller.insertRutEstadisticas(pasar, fecha);
+        	controller.insertRutEstadisticas(pasar, fecha, equipo, ID);
         }
+	}
+	
+	public void validarAsis(String pasar){		
+		calendar = Calendar.getInstance();
+		year = calendar.get(Calendar.YEAR);		
+		month = calendar.get(Calendar.MONTH);
+		day = calendar.get(Calendar.DAY_OF_MONTH);
+		
+		String year2;
+		year2 = Integer.toString(year);
+		String month2;
+		month2 = Integer.toString(month+1);
+		String day2;
+		day2 = Integer.toString(day);
+		
+		String fecha;
+		fecha = day2+"/"+month2+"/"+year2;
+		fecha.trim().toString();
+		
+		// Get User records from SQLite DB
+        ArrayList<HashMap<String, String>> userList = controller.getAsisEstadis(pasar, fecha);		      
+        // If users exists in SQLite DB
+        if (userList.size() != 0){
+        	//beepNoPass();
+        	msgingreso();
+        	checkvalid.setImageResource(R.drawable.warning_check);     
+        	et_code.setText(pasar);
+        	//Log.i(TAG, "MyBroadcastReceiver code: " + pasar);	
+        }else{
+        	getRut(pasar);
+        }		
 	}
 		
 
@@ -296,8 +346,8 @@ public class MainActivity extends Activity {
 			}else{
 				sinGuion = text.substring(0,9);
 				pasar = sinGuion.replace(" ", "").toLowerCase();										
-		    }			
-			getRut(pasar);							
+		    }	
+			validarAsis(pasar);									
 		}
 	}
 }

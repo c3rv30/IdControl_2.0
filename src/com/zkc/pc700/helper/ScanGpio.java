@@ -68,6 +68,5 @@ public class ScanGpio {
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
-
 	}
 }

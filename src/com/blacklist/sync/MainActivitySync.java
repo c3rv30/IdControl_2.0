@@ -44,6 +44,8 @@ public class MainActivitySync extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_sync);
+        
+        
        /*// Get User records from SQLite DB
         ArrayList<HashMap<String, String>> userList = controller.getAllUsers();
         // If users exists in SQLite DB
@@ -72,7 +74,7 @@ public class MainActivitySync extends Activity {
         getActionBar().setDisplayHomeAsUpEnabled(true);
     }
     
-  //Button Sinc. BlackList
+  //Button Sync. BlackList
     public void syncDB(View v){
         controller.deleteFromTable();
         syncSQLiteMySQLDB();
@@ -91,7 +93,6 @@ public class MainActivitySync extends Activity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here.
-
 
         // When Sync action button is clicked
         /*if (id == R.id.refresh) {
@@ -159,13 +160,13 @@ public class MainActivitySync extends Activity {
                     // Get JSON object
                     JSONObject obj = (JSONObject) arr.get(i);
                     System.out.println(obj.get("userId"));
-                    System.out.println(obj.get("userName"));
+                    System.out.println(obj.get("userRut"));
                     // DB QueryValues Object to insert into SQLite
                     queryValues = new HashMap<String, String>();
                     // Add userID extracted from Object
                     queryValues.put("userId", obj.get("userId").toString());
                     // Add userName extracted from Object
-                    queryValues.put("userName", obj.get("userName").toString());
+                    queryValues.put("userRut", obj.get("userRut").toString());
                     // Insert User into SQLite DB
                     controller.insertUser(queryValues);
                     HashMap<String, String> map = new HashMap<String, String>();
@@ -175,7 +176,8 @@ public class MainActivitySync extends Activity {
                     usersynclist.add(map);
                 }
                 // Inform Remote MySQL DB about the completion of Sync activity by passing Sync status of Users
-                updateMySQLSyncSts(gson.toJson(usersynclist));
+                // Permite cambiar estad de sincronizacion de datos en servidor
+                //updateMySQLSyncSts(gson.toJson(usersynclist));
                 // Reload the Main Activity
                 //reloadActivity();
             }

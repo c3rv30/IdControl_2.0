@@ -1,25 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:orientation="vertical" 
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center">
-    
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="MENU"
-        android:id="@+id/txtMenu"
-      	android:textSize="40sp"
-        />
+    android:gravity="center">    
 
+    
+    <ImageView 
+        android:id="@+id/logo"
+        android:layout_width="300dp"
+        android:layout_height="0dp"
+        android:layout_weight="1.0"
+        android:layout_marginTop="50dp"
+        android:adjustViewBounds="true"
+        android:scaleType="fitStart"
+        android:src="@drawable/logo_id" 
+        />
+    
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/escanear"
         android:id="@+id/btn_scan"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="10dp"
         android:layout_gravity="center_horizontal"
-        android:layout_centerInParent="true"
         android:onClick="btnScan"
         />
 
@@ -28,7 +32,7 @@
         android:layout_height="wrap_content"
         android:text="@string/estadisticas"
         android:id="@+id/btn_esta"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:layout_gravity="center_horizontal"
         android:layout_below="@+id/btn_scan"
         android:layout_centerInParent="true"
@@ -40,10 +44,10 @@
         android:layout_height="wrap_content"
         android:text="@string/sincronizar"
         android:id="@+id/btn_sync"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:layout_gravity="center_horizontal"
         android:layout_below="@+id/btn_esta"
         android:layout_centerInParent="true"
-        android:onClick="btnSync"
+        android:onClick="syncDB"
         />
 </LinearLayout>
