@@ -9,6 +9,7 @@ import com.zkc.barcodescan.R;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -77,8 +78,8 @@ public class MostrarAsignacion extends Activity {
 	}
 	
 	public void btnCerrarSesion(View view){		
-		controller.vaciarEquipoAsignado();
-		setContentView(R.layout.activity_login_admin);
+		Intent objIntent = new Intent(getApplicationContext(), LoginAdmin.class);
+        startActivity(objIntent);
 		finish();
 	}
 }

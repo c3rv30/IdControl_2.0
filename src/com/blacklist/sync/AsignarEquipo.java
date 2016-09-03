@@ -231,8 +231,8 @@ public class AsignarEquipo extends Activity {
     }
     
     public void cerrarSesionAdmin(View view){		
-		controller.vaciarEquipoAsignado();
-		setContentView(R.layout.activity_login_admin);
+		Intent objIntent = new Intent(getApplicationContext(), LoginAdmin.class);
+        startActivity(objIntent);
 		finish();
 	}
     
