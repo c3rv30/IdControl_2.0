@@ -44,6 +44,7 @@ public class LoginAdmin extends Activity {
 				
 				Intent intent = new Intent(this, AsignarEquipo.class);
 		        startActivity(intent);
+		        finish();
 		        
 			}else{
 				Toast toast = Toast.makeText(this, "Usuario o Contraseña Incrrectos", Toast.LENGTH_SHORT);

@@ -71,7 +71,15 @@ public class MostrarAsignacion extends Activity {
 	}	
 	
 	public void btnDesEquipo(View view){		
-		controller.vaciarEquipoAsignado();		
+		controller.vaciarEquipoAsignado();
+		setContentView(R.layout.activity_asignar_equipo);
+		finish();
+	}
+	
+	public void btnCerrarSesion(View view){		
+		controller.vaciarEquipoAsignado();
+		setContentView(R.layout.activity_login_admin);
+		finish();
 	}
 }
 

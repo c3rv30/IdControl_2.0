@@ -117,7 +117,8 @@ public class AsignarEquipo extends Activity {
         startActivity(intent);
 	}
 	
-	public void btnSyncEquipo(View v){		
+	public void btnSyncEquipo(View v){	
+		controller.vaciarEquipo();
 		syncSQLiteToMySQLDBEquipo();			
 	}
 	
@@ -226,7 +227,14 @@ public class AsignarEquipo extends Activity {
     public void reloadActivity() {
         Intent objIntent = new Intent(getApplicationContext(), AsignarEquipo.class);
         startActivity(objIntent);
+        finish();
     }
+    
+    public void cerrarSesionAdmin(View view){		
+		controller.vaciarEquipoAsignado();
+		setContentView(R.layout.activity_login_admin);
+		finish();
+	}
     
 }
 

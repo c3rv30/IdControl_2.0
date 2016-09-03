@@ -455,4 +455,16 @@ public class DBController extends SQLiteOpenHelper {
         database.execSQL(updateQuery);
         database.close();
     }
+    
+    public void vaciarEquipo(){    	
+    	SQLiteDatabase database = this.getWritableDatabase();    
+        String updateQuery = "DELETE FROM equipo";
+        Log.d("query",updateQuery);     
+        database.execSQL(updateQuery);
+        database.close();
+    }
+    
+    
+    
+    
 }

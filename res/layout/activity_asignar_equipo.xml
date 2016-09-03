@@ -53,5 +53,16 @@
         android:layout_gravity="center_horizontal"
         android:onClick="btnSyncEquipo"/>
      
+      <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center_horizontal"
+ 		android:id="@+id/btnCerrarSesion2"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:text="Cerrar Sesion" 
+        android:onClick="cerrarSesionAdmin"
+        />     
      
 </LinearLayout>
