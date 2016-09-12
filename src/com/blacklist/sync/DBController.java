@@ -445,6 +445,15 @@ public class DBController extends SQLiteOpenHelper {
     }    
     
     
+    public void updateSyncStatusToNo(){
+        SQLiteDatabase database = this.getWritableDatabase();    
+        String updateQuery = "Update estadisticas set updateStatus = '"+"no"+"' where updateStatus = '"+"yes"+"'";
+        //Update clientes Set nombre='José' Where nombre='Pepe'
+        Log.d("query",updateQuery);     
+        database.execSQL(updateQuery);
+        database.close();
+    } 
+    
     
     
     public void vaciarEquipoAsignado(){    	

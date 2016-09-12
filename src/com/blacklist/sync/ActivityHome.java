@@ -127,6 +127,7 @@ public class ActivityHome extends Activity {
     
   //Button Sync. BlackList
     public void syncDB(View v){
+    	controller.updateSyncStatusToNo();
         controller.deleteFromTable();
         syncSQLiteMySQLDB();
         syncSQLiteToMySQLDB();
