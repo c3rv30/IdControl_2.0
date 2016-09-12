@@ -136,8 +136,7 @@ public class DBController extends SQLiteOpenHelper {
         }
         database.close();
         return usersList;
-    }    
-    
+    }      
     
    
  
