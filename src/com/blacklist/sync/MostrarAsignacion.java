@@ -71,16 +71,20 @@ public class MostrarAsignacion extends Activity {
         }    
 	}	
 	
-	public void btnDesEquipo(View view){		
+	public void btnDesEquipo(View v){		
 		controller.vaciarEquipoAsignado();
-		setContentView(R.layout.activity_asignar_equipo);
+		//setContentView(R.layout.activity_asignar_equipo);
+		
+		Intent intent = new Intent(this, AsignarEquipo.class);
+        startActivity(intent);
 		finish();
 	}
 	
-	public void btnCerrarSesion(View view){		
-		Intent objIntent = new Intent(getApplicationContext(), LoginAdmin.class);
-        startActivity(objIntent);
-		finish();
+	public void btnCerrarSesion(View v){		
+		//Intent objIntent = new Intent(getApplicationContext(), LoginAdmin.class);
+        //startActivity(objIntent);        
+        setContentView(R.layout.activity_barcode_main_two);
+		finish();	
 	}
 }
 

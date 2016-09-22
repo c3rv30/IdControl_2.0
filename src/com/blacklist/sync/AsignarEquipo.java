@@ -70,7 +70,7 @@ public class AsignarEquipo extends Activity {
         	
         	Intent intent = new Intent(this, MostrarAsignacion.class);
             startActivity(intent);
-            
+            finish();            
         }else{             	
         	// Get User records from SQLite DB
             ArrayList<String> userList = controller.getAllEquipo2();
@@ -112,9 +112,11 @@ public class AsignarEquipo extends Activity {
 		dispId.toString().trim();
 		Spinner spinner = (Spinner)findViewById(R.id.EquipoSpinner);
 		String nom = spinner.getSelectedItem().toString();
-		controller.insertEquipoAsignado(nom, dispId);
+		controller.insertEquipoAsignado(nom, dispId);		
 		Intent intent = new Intent(this, MostrarAsignacion.class);
-        startActivity(intent);
+        startActivity(intent);        
+        //setContentView(R.layout.activity_mostrar_equipo);
+		finish();
 	}
 	
 	public void btnSyncEquipo(View v){	

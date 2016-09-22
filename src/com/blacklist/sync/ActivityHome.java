@@ -6,6 +6,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.content.Context;
 import android.content.Intent;
@@ -39,6 +40,8 @@ public class ActivityHome extends Activity {
     // Progress Dialog Object
     ProgressDialog prgDialog;
     HashMap<String, String> queryValues;
+    TextView equipo;
+	TextView dispId;
 	
 	
 	
@@ -72,8 +75,19 @@ public class ActivityHome extends Activity {
         // Alarm Manager calls BroadCast for every Ten seconds (10 * 1000), BroadCase further calls service to check if new records are inserted in
         // Remote MySQL DB
         //alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, Calendar.getInstance().getTimeInMillis() + 5000, 60 * 1000, pendingIntent);
+        //getActionBar().setDisplayHomeAsUpEnabled(true);  
         
-        //getActionBar().setDisplayHomeAsUpEnabled(true);   
+        equipo = (TextView) findViewById(R.id.equipoHome);
+        dispId = (TextView) findViewById(R.id.idHome);
+        
+        String equipo1 = controller.getEquipoAsignado();
+        String ID = controller.getIdDispAsignado();
+        
+        if (equipo1.length() != 0) {
+        	equipo.setText("Equipo : "+equipo1);
+        	dispId.setText("Id Dispositivo :"+ID);
+
+        	}        
 	}
 	
 	
@@ -113,7 +127,7 @@ public class ActivityHome extends Activity {
   //Button Estadistics
     public void btnStadistic(View view){
     	Intent intent = new Intent(this, ActivityEstadisticas.class);
-    	startActivity(intent);        
+    	startActivity(intent);
     }
     
   /*//Button Sync DB

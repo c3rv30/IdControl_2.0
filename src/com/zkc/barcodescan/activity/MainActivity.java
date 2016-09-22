@@ -11,9 +11,10 @@ import java.util.Set;
 
 import android.media.MediaPlayer;
 
-
+import com.blacklist.sync.ActivityHome;
 import com.blacklist.sync.DBController;
 import com.blacklist.sync.MainActivitySync;
+import com.blacklist.sync.MostrarAsignacion;
 import com.zkc.Service.CaptureService;
 import com.zkc.barcodescan.R;
 import android.annotation.SuppressLint;
@@ -184,7 +185,7 @@ public class MainActivity extends Activity {
 
 	@Override
 	public void onBackPressed() {
-		exitActivity();
+		exitActivity();		
 	}
 
 	@Override
@@ -239,6 +240,10 @@ public class MainActivity extends Activity {
 		//MediaPlayer mp = MediaPlayer.create(this, R.raw.beep_no_pass);
 		MediaPlayer mp = MediaPlayer.create(this, R.raw.denied_beep_v2);
     	mp.start();
+	}
+	
+	public void vaciarCasilla(View v){
+		et_code.setText("");			
 	}
 	
 	public void manualButton(View v){		

@@ -23,8 +23,8 @@ public class LoginAdmin extends Activity {
         
         EditUserAdmin = (EditText) findViewById(R.id.EditUserAdmin);
         editTextPassAdmin = (EditText) findViewById(R.id.editTextPassAdmin);
-        //EditUserAdmin.setText("rarratia");
-        //editTextPassAdmin.setText("Rupi2213");
+        EditUserAdmin.setText("rarratia");
+        editTextPassAdmin.setText("Rupi2213");
         
         
         
@@ -47,7 +47,7 @@ public class LoginAdmin extends Activity {
 		        finish();
 		        
 			}else{
-				Toast toast = Toast.makeText(this, "Usuario o Contraseña Incrrectos", Toast.LENGTH_SHORT);
+				Toast toast = Toast.makeText(this, "Usuario o Contraseï¿½a Incrrectos", Toast.LENGTH_SHORT);
 		        toast.show();
 			}			
 		}				
