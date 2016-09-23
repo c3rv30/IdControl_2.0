@@ -231,6 +231,11 @@ public class MainActivity extends Activity {
         toast.show();        
     }
 	
+	public void msgInvalidRut() {
+        Toast toast = Toast.makeText(this, "PRut Invalido Escanear Nuevamente", Toast.LENGTH_SHORT);
+        toast.show();        
+    }
+	
 	public void beepPass(){
 		MediaPlayer mp = MediaPlayer.create(this, R.raw.valid_beep);
     	mp.start();
@@ -346,6 +351,35 @@ public class MainActivity extends Activity {
         	getRut(pasar);
         }		
 	}
+	
+	
+	// Validar Rut
+	
+	public static boolean validarRut(String rut) {
+
+		boolean validacion = false;
+		try {
+			rut =  rut.toUpperCase();
+			rut = rut.replace(".", "");
+			rut = rut.replace("-", "");
+			int rutAux = Integer.parseInt(rut.substring(0, rut.length() - 1));
+			char dv = rut.charAt(rut.length() - 1);
+			int m = 0, s = 1;
+			for (; rutAux != 0; rutAux /= 10) {
+				s = (s + rutAux % 10 * (9 - m++ % 6)) % 11;
+			}
+			if (dv == (char) (s != 0 ? s + 47 : 75)) {
+				validacion = true;			
+			}
+		} catch (java.lang.NumberFormatException e) {
+			
+		} catch (Exception e) {
+			
+		}
+		return validacion;
+		}
+	
+	
 		
 
 	@SuppressLint("DefaultLocale")
@@ -354,7 +388,10 @@ public class MainActivity extends Activity {
 		@Override
 		public void onReceive(Context context, Intent intent) {
 			// TODO Auto-generated method stub
-			String text = intent.getExtras().getString("code");			
+			String text = intent.getExtras().getString("code");	
+			
+			// Validar Rut
+
 			String rut = text;			
 			String sSubcadena = rut.substring(0,5);			
 			String newCed = "https";
@@ -365,12 +402,19 @@ public class MainActivity extends Activity {
 			if(sSubcadena.equals(newCed)){
 				igual = text.substring(52,62);
 				sinGuion = igual.replace("-", "");
+				sinGuion = igual.replace("&", "");
 				pasar = sinGuion.toLowerCase();
 			}else{
 				sinGuion = text.substring(0,9);
 				pasar = sinGuion.replace(" ", "").toLowerCase();										
-		    }	
-			validarAsis(pasar);									
+		    }			
+			
+			 if(validarRut(pasar)){
+				 validarAsis(pasar);
+			 }else{
+				 checkvalid.setImageResource(R.drawable.warning_check);
+				 msgInvalidRut();
+			 }			
 		}
 	}
 }
