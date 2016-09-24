@@ -232,7 +232,7 @@ public class MainActivity extends Activity {
     }
 	
 	public void msgInvalidRut() {
-        Toast toast = Toast.makeText(this, "PRut Invalido Escanear Nuevamente", Toast.LENGTH_SHORT);
+        Toast toast = Toast.makeText(this, "Rut Invalido Escanear Nuevamente", Toast.LENGTH_SHORT);
         toast.show();        
     }
 	
@@ -261,8 +261,7 @@ public class MainActivity extends Activity {
 			et_code.setText("");
 			validarAsis(pasar);
 			//getRut(pasar);
-			et_code.setText(pasar);
-		}		
+		}
 	}
 	
 	public void getRut(String pasar){		
@@ -352,69 +351,68 @@ public class MainActivity extends Activity {
         }		
 	}
 	
-	
-	// Validar Rut
-	
-	public static boolean validarRut(String rut) {
-
-		boolean validacion = false;
-		try {
-			rut =  rut.toUpperCase();
-			rut = rut.replace(".", "");
-			rut = rut.replace("-", "");
-			int rutAux = Integer.parseInt(rut.substring(0, rut.length() - 1));
-			char dv = rut.charAt(rut.length() - 1);
-			int m = 0, s = 1;
-			for (; rutAux != 0; rutAux /= 10) {
-				s = (s + rutAux % 10 * (9 - m++ % 6)) % 11;
-			}
-			if (dv == (char) (s != 0 ? s + 47 : 75)) {
-				validacion = true;			
-			}
-		} catch (java.lang.NumberFormatException e) {
-			
-		} catch (Exception e) {
-			
-		}
-		return validacion;
-		}
-	
-	
-		
-
 	@SuppressLint("DefaultLocale")
 	public class ScanBroadcastReceiver extends BroadcastReceiver {
 		@SuppressLint("DefaultLocale")
 		@Override
 		public void onReceive(Context context, Intent intent) {
 			// TODO Auto-generated method stub
-			String text = intent.getExtras().getString("code");	
-			
-			// Validar Rut
-
+			String text = intent.getExtras().getString("code");
 			String rut = text;			
 			String sSubcadena = rut.substring(0,5);			
 			String newCed = "https";
 			String igual;
 			String sinGuion;
-			String pasar;
-			
+			String pasar;			
 			if(sSubcadena.equals(newCed)){
-				igual = text.substring(52,62);
-				sinGuion = igual.replace("-", "");
-				sinGuion = igual.replace("&", "");
-				pasar = sinGuion.toLowerCase();
+				igual = text.substring(52,62);				
+				igual.replace("-", "").replace("&", "").toLowerCase();
+				et_code.setText(igual.replace("-", "").replace("&", "").toLowerCase());
+				sinGuion = et_code.getText().toString();
+				pasar = sinGuion;
 			}else{
 				sinGuion = text.substring(0,9);
-				pasar = sinGuion.replace(" ", "").toLowerCase();										
-		    }			
+				pasar = sinGuion.replace(" ", "").toUpperCase();
+		    }
 			
-			 if(validarRut(pasar)){
+			validarAsis(pasar);
+			
+			//validarAsis(pasar);
+			/*
+			if(validarRut(pasar)){
 				 validarAsis(pasar);
 			 }else{
 				 checkvalid.setImageResource(R.drawable.warning_check);
 				 msgInvalidRut();
-			 }			
+			 }
+			 */		
 		}
 	}
-}
+	
+	
+	// Validar Rut
+	
+		public boolean validarRut(String rut) {
+			boolean validacion = false;
+			try {
+				rut =  rut.toUpperCase();
+				rut = rut.replace(".", "");
+				rut = rut.replace("-", "");
+				int rutAux = Integer.parseInt(rut.substring(0, rut.length() - 1));
+				char dv = rut.charAt(rut.length() - 1);
+				int m = 0, s = 1;
+				for (; rutAux != 0; rutAux /= 10) {
+					s = (s + rutAux % 10 * (9 - m++ % 6)) % 11;
+				}
+				if (dv == (char) (s != 0 ? s + 47 : 75)) {
+					validacion = true;			
+				}
+			} catch (java.lang.NumberFormatException e) {
+				
+			} catch (Exception e) {
+				
+			}
+			return validacion;
+		}
+
+}//Cierre clase
