@@ -259,8 +259,15 @@ public class MainActivity extends Activity {
 	        toast.show();
 		}else{
 			et_code.setText("");
-			validarAsis(pasar);
-			//getRut(pasar);
+			boolean b = validarRut(pasar);			
+			if(b == true){
+				validarAsis(pasar);
+				System.out.println(b);
+			}else{				
+				SerialPort.CleanBuffer();
+				CaptureService.scanGpio.openScan();
+				clean(v);
+			}
 		}
 	}
 	
@@ -269,15 +276,13 @@ public class MainActivity extends Activity {
         ArrayList<HashMap<String, String>> userList = controller.getBlackUser(pasar);		      
         // If users exists in SQLite DB
         if (userList.size() != 0){
-        	for (int a = 0; a<userList.size();a++){
-        		
+        	for (int a = 0; a<userList.size();a++){        		
         		HashMap<String, String> tmpData = (HashMap<String, String>) userList.get(a);
         		Set<String> key = tmpData.keySet();
         		Iterator it = key.iterator();
         		while (it.hasNext()){
         			String hmKey = (String)it.next();
-        			String hmData = (String)tmpData.get(hmKey);
-        			
+        			String hmData = (String)tmpData.get(hmKey);        			
         			System.out.println("Key: "+hmKey +" & Data: "+hmData);
         			nomList.setText("Numero de Lista: "+hmData);
         		}
@@ -351,6 +356,29 @@ public class MainActivity extends Activity {
         }		
 	}
 	
+	public static boolean validarRut(String rut) {
+		boolean validacion = false;
+		try {
+			rut = rut.toUpperCase();
+			rut = rut.replace(".", "");
+			rut = rut.replace("-", "");
+			int rutAux = Integer.parseInt(rut.substring(0, rut.length() - 1));
+			char dv = rut.charAt(rut.length() - 1);
+			int m = 0, s = 1;
+			for (; rutAux != 0; rutAux /= 10) {
+				s = (s + rutAux % 10 * (9 - m++ % 6)) % 11;
+			}
+			if (dv == (char) (s != 0 ? s + 47 : 75)) {
+				validacion = true;			
+			}
+		} catch (java.lang.NumberFormatException e) {
+			System.out.println(e);
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return validacion;		
+	}
+	
 	@SuppressLint("DefaultLocale")
 	public class ScanBroadcastReceiver extends BroadcastReceiver {
 		@SuppressLint("DefaultLocale")
@@ -363,7 +391,8 @@ public class MainActivity extends Activity {
 			String newCed = "https";
 			String igual;
 			String sinGuion;
-			String pasar;			
+			String pasar;
+			
 			if(sSubcadena.equals(newCed)){
 				igual = text.substring(52,62);				
 				igual.replace("-", "").replace("&", "").toLowerCase();
@@ -373,46 +402,15 @@ public class MainActivity extends Activity {
 			}else{
 				sinGuion = text.substring(0,9);
 				pasar = sinGuion.replace(" ", "").toUpperCase();
-		    }
-			
-			validarAsis(pasar);
-			
-			//validarAsis(pasar);
-			/*
-			if(validarRut(pasar)){
-				 validarAsis(pasar);
-			 }else{
-				 checkvalid.setImageResource(R.drawable.warning_check);
-				 msgInvalidRut();
-			 }
-			 */		
+		    }			
+						
+			boolean b = validarRut(pasar);
+			if(b == true){
+				validarAsis(pasar);
+				System.out.println(b);
+			}else{
+				System.out.println(b);
+			}
 		}
 	}
-	
-	
-	// Validar Rut
-	
-		public boolean validarRut(String rut) {
-			boolean validacion = false;
-			try {
-				rut =  rut.toUpperCase();
-				rut = rut.replace(".", "");
-				rut = rut.replace("-", "");
-				int rutAux = Integer.parseInt(rut.substring(0, rut.length() - 1));
-				char dv = rut.charAt(rut.length() - 1);
-				int m = 0, s = 1;
-				for (; rutAux != 0; rutAux /= 10) {
-					s = (s + rutAux % 10 * (9 - m++ % 6)) % 11;
-				}
-				if (dv == (char) (s != 0 ? s + 47 : 75)) {
-					validacion = true;			
-				}
-			} catch (java.lang.NumberFormatException e) {
-				
-			} catch (Exception e) {
-				
-			}
-			return validacion;
-		}
-
 }//Cierre clase
