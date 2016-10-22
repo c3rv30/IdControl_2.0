@@ -262,7 +262,7 @@ public class MainActivity extends Activity {
 			boolean b = validarRut(pasar);			
 			if(b == true){
 				validarAsis(pasar);
-				System.out.println(b);
+				//System.out.println(b);
 			}else{				
 				SerialPort.CleanBuffer();
 				CaptureService.scanGpio.openScan();
@@ -407,9 +407,10 @@ public class MainActivity extends Activity {
 			boolean b = validarRut(pasar);
 			if(b == true){
 				validarAsis(pasar);
-				System.out.println(b);
 			}else{
-				System.out.println(b);
+				SerialPort.CleanBuffer();
+				CaptureService.scanGpio.openScan();
+				checkvalid.setImageDrawable(null);
 			}
 		}
 	}
